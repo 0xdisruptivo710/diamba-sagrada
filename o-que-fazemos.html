@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça os serviços da Diamba Sagrada: acolhimento humanizado, orientação sobre cannabis medicinal, conexão com médicos, suporte jurídico e mais.">
+  <title>O Que Fazemos — Diamba Sagrada</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. NAVIGATION
+       ======================================================================== -->
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav__inner">
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="Diamba Sagrada — Página inicial">
+        <img src="img/logo.png" alt="Logo Diamba Sagrada" width="48" height="48">
+        Diamba Sagrada
+      </a>
+
+      <!-- Desktop links -->
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Início</a>
+        <a href="quem-somos.html" class="nav__link">Quem Somos</a>
+        <a href="o-que-fazemos.html" class="nav__link nav__link--active">O Que Fazemos</a>
+        <a href="seja-associado.html" class="nav__link">Seja Associado</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <a href="seja-associado.html" class="btn btn--primary nav__cta">Seja Associado</a>
+
+      <!-- Mobile toggle -->
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile overlay -->
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Menu de navegação">
+      <a href="index.html">Início</a>
+      <a href="quem-somos.html">Quem Somos</a>
+      <a href="o-que-fazemos.html">O Que Fazemos</a>
+      <a href="seja-associado.html">Seja Associado</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ========================================================================
+         2. INTERNAL HERO
+         ======================================================================== -->
+    <section class="hero hero--internal">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb page-enter" aria-label="Breadcrumb">
+          <a href="index.html">Início</a>
+          <span class="breadcrumb__sep" aria-hidden="true">&rsaquo;</span>
+          <span aria-current="page">O Que Fazemos</span>
+        </nav>
+
+        <h1 class="hero__title page-enter page-enter--delay-1">O Que Fazemos</h1>
+        <p class="hero__subtitle page-enter page-enter--delay-2">Conheça os serviços e o suporte que oferecemos aos nossos associados.</p>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. SERVICES GRID
+         ======================================================================== -->
+    <section class="section">
+      <div class="container">
+        <!-- Section header -->
+        <div class="section__header reveal">
+          <span class="section__overline">Nossos Serviços</span>
+          <h2 class="section__title">Como apoiamos nossos pacientes</h2>
+          <p class="section__desc">Cada serviço foi pensado para acolher, orientar e proteger pacientes que buscam tratamento com cannabis medicinal.</p>
+        </div>
+
+        <!-- 2-column services grid -->
+        <div class="services-grid stagger">
+
+          <!-- 1. Acolhimento Humanizado -->
+          <div class="service-card reveal">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 11V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5"/>
+              <path d="M6 11c-2 0-3 1.5-3 3s1 3 3 3"/>
+              <path d="M18 11c2 0 3 1.5 3 3s-1 3-3 3"/>
+              <path d="M6 17v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1"/>
+              <path d="M12 4v8"/>
+              <path d="M9 8l3 4 3-4"/>
+            </svg>
+            <h3 class="service-card__title">Acolhimento Humanizado</h3>
+            <p class="service-card__text">Recebemos cada paciente com escuta ativa, sem julgamento. Nosso primeiro passo é entender sua história, suas necessidades e seus medos.</p>
+          </div>
+
+          <!-- 2. Orientação sobre Cannabis Medicinal -->
+          <div class="service-card reveal">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z"/>
+              <path d="M12 6c0 0-3 2-3 5s1.5 4 3 4 3-1 3-4-3-5-3-5Z"/>
+              <path d="M12 11v4"/>
+            </svg>
+            <h3 class="service-card__title">Orientação sobre Cannabis Medicinal</h3>
+            <p class="service-card__text">Oferecemos informação qualificada sobre o uso medicinal da cannabis, indicações, formas de uso e expectativas realistas de tratamento.</p>
+          </div>
+
+          <!-- 3. Conexão com Médicos Parceiros -->
+          <div class="service-card reveal">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.8 2.3A.3.3 0 1 0 5 2H4.8Z"/>
+              <path d="M8 15a5 5 0 0 1-5-5V6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5Z"/>
+              <path d="M15 10a3 3 0 0 0 3-3V5"/>
+              <path d="M18 2a2 2 0 0 1 2 2v1a3 3 0 0 1-3 3"/>
+              <path d="M8 15v2a5 5 0 0 0 10 0v-2"/>
+              <path d="M8 15a5 5 0 0 0 5 5"/>
+              <path d="M13 22v-2"/>
+            </svg>
+            <h3 class="service-card__title">Conexão com Médicos Parceiros</h3>
+            <p class="service-card__text">Conectamos pacientes a médicos prescritores habilitados e sensíveis ao tratamento com cannabis medicinal.</p>
+          </div>
+
+          <!-- 4. Suporte Jurídico -->
+          <div class="service-card reveal">
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11 5.25-.85 9-5.75 9-11V7l-9-5Z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <h3 class="service-card__title">Suporte Jurídico</h3>
+            <p class="service-card__text">Orientação sobre direitos do paciente, habeas corpus preventivo, salvo-conduto e processos junto à Anvisa.</p>
+          </div>
+
+          <!-- 5. Cultivo Associativo -->
+          <div class="service-card reveal">
+            <span class="service-card__badge">Em breve</span>
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22V10"/>
+              <path d="M12 10C12 10 8 6 8 3c0 0 4 1 4 7Z"/>
+              <path d="M12 10c0 0 4-4 4-7 0 0-4 1-4 7Z"/>
+              <path d="M7 18c-2.5 0-4-1.5-4-3.5S5 11 7 11c0 0 0 7 5 7"/>
+              <path d="M17 18c2.5 0 4-1.5 4-3.5S19 11 17 11c0 0 0 7-5 7"/>
+            </svg>
+            <h3 class="service-card__title">Cultivo Associativo</h3>
+            <p class="service-card__text">Cultivo coletivo de cannabis para fins medicinais, garantindo qualidade, rastreabilidade e custo acessível aos associados.</p>
+          </div>
+
+          <!-- 6. Programa de Acesso Solidário -->
+          <div class="service-card reveal">
+            <span class="service-card__badge">Em breve</span>
+            <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3.33.84-4.5 2.17"/>
+              <path d="M12 5.17C10.83 3.84 9.26 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.04 3 5.5l7 7"/>
+              <path d="M12 21l2-2"/>
+              <path d="M8 15c0 0-1 1-1 2.5S8.5 20 8.5 20"/>
+              <path d="M16 15c0 0 1 1 1 2.5s-1.5 2.5-1.5 2.5"/>
+            </svg>
+            <h3 class="service-card__title">Programa de Acesso Solidário</h3>
+            <p class="service-card__text">Acesso a fitoterápicos à base de cannabis para pacientes em situação de vulnerabilidade social.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. DIFFERENTIALS
+         ======================================================================== -->
+    <section class="section section--sm" style="background-color: white;">
+      <div class="container">
+        <!-- Section header -->
+        <div class="section__header reveal">
+          <span class="section__overline">Por que a Diamba Sagrada</span>
+          <h2 class="section__title">Nossos diferenciais</h2>
+        </div>
+
+        <!-- 3-column differentials grid -->
+        <div class="differentials stagger">
+
+          <!-- 1. Cuidado Integral -->
+          <div class="diff-item reveal">
+            <svg class="diff-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a7 7 0 0 1 0 14 7 7 0 0 1 0-14"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <div>
+              <h3 class="diff-item__title">Cuidado Integral</h3>
+              <p class="diff-item__text">Não tratamos apenas sintomas. Nossa abordagem considera corpo, mente e espírito em cada jornada de cura.</p>
+            </div>
+          </div>
+
+          <!-- 2. Rede de Confiança -->
+          <div class="diff-item reveal">
+            <svg class="diff-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="5" cy="12" r="2"/>
+              <circle cx="19" cy="12" r="2"/>
+              <circle cx="12" cy="5" r="2"/>
+              <circle cx="12" cy="19" r="2"/>
+              <path d="M6.7 10.7L10.7 6.7"/>
+              <path d="M13.3 6.7l4 4"/>
+              <path d="M17.3 13.3l-4 4"/>
+              <path d="M10.7 17.3l-4-4"/>
+            </svg>
+            <div>
+              <h3 class="diff-item__title">Rede de Confiança</h3>
+              <p class="diff-item__text">Médicos, advogados e pacientes unidos em uma comunidade de apoio mútuo e transparência.</p>
+            </div>
+          </div>
+
+          <!-- 3. Acessibilidade -->
+          <div class="diff-item reveal">
+            <svg class="diff-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/>
+              <path d="M15 4h2a2 2 0 0 1 2 2v4"/>
+              <path d="M15 20h2a2 2 0 0 0 2-2v-4"/>
+              <path d="M13 12H3"/>
+              <path d="M19 10v4"/>
+            </svg>
+            <div>
+              <h3 class="diff-item__title">Acessibilidade</h3>
+              <p class="diff-item__text">Trabalhamos para que o tratamento com cannabis medicinal seja acessível a todos, independente de condição social.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. HOW IT WORKS — TIMELINE
+         ======================================================================== -->
+    <section class="section journey">
+      <div class="container">
+        <!-- Section header -->
+        <div class="section__header reveal">
+          <span class="section__overline">Passo a passo</span>
+          <h2 class="section__title">Como funciona na prática</h2>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline reveal">
+          <!-- Step 1 -->
+          <div class="timeline__step">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <span class="timeline__number">Passo 01</span>
+            <h3 class="timeline__title">Entre em contato</h3>
+            <p class="timeline__text">Fale conosco por WhatsApp ou formulário.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline__step">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <span class="timeline__number">Passo 02</span>
+            <h3 class="timeline__title">Receba orientação</h3>
+            <p class="timeline__text">Nossa equipe vai entender sua situação.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline__step">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <span class="timeline__number">Passo 03</span>
+            <h3 class="timeline__title">Conecte-se</h3>
+            <p class="timeline__text">Encaminhamos para médico ou advogado parceiro.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline__step">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <span class="timeline__number">Passo 04</span>
+            <h3 class="timeline__title">Acompanhamento</h3>
+            <p class="timeline__text">Suporte contínuo durante seu tratamento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. CTA FINAL
+         ======================================================================== -->
+    <section class="section cta-final">
+      <div class="cta-final__bg" aria-hidden="true"></div>
+      <div class="cta-final__watermark" aria-hidden="true">
+        <img src="img/marca-dagua-branca.png" alt="" loading="lazy">
+      </div>
+      <div class="container cta-final__content">
+        <h2 class="reveal">Pronto para dar o primeiro passo?</h2>
+        <p class="reveal">Entre em contato e descubra como podemos ajudar na sua jornada de cuidado.</p>
+        <div class="btn-group flex-center reveal">
+          <a href="seja-associado.html" class="btn btn--gold btn--lg">Quero me associar</a>
+          <a href="#" class="btn btn--light btn--lg">Fale conosco</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       7. FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand -->
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="img/logo.png" alt="Logo Diamba Sagrada" width="40" height="40">
+            Diamba Sagrada
+          </div>
+          <p class="footer__desc">Associação de pacientes de cannabis medicinal. Acolhimento, orientação e acesso seguro ao tratamento.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <h4 class="footer__heading">Navegação</h4>
+          <ul class="footer__list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quem-somos.html">Quem Somos</a></li>
+            <li><a href="o-que-fazemos.html">O Que Fazemos</a></li>
+            <li><a href="seja-associado.html">Seja Associado</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="footer__heading">Contato</h4>
+          <ul class="footer__list">
+            <li><a href="mailto:contato@diambasagrada.org.br">contato@diambasagrada.org.br</a></li>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; 2026 Diamba Sagrada. Todos os direitos reservados.</span>
+        <span>Uso medicinal conforme legislação brasileira vigente.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
