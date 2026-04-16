@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Diamba Sagrada</title>
+  <meta name="description" content="Artigos sobre cannabis medicinal, ciência, saúde, legislação e ancestralidade. Conteúdo educativo da Diamba Sagrada para pacientes e profissionais.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="nav" role="banner">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Diamba Sagrada — Página Inicial">
+        <img src="img/logo.png" alt="Logo Diamba Sagrada" width="48" height="48">
+        <span>Diamba Sagrada</span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Início</a>
+        <a href="quem-somos.html" class="nav__link">Quem Somos</a>
+        <a href="area-medica.html" class="nav__link">Área Médica</a>
+        <a href="area-juridica.html" class="nav__link">Jurídico</a>
+        <a href="blog.html" class="nav__link nav__link--active" aria-current="page">Blog</a>
+        <a href="produtos.html" class="nav__link">Loja</a>
+        <a href="contato.html" class="nav__link">Contato</a>
+      </div>
+      <a href="seja-associado.html" class="btn btn--primary nav__cta">Seja Associado</a>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Menu de navegação">
+      <a href="index.html">Início</a>
+      <a href="quem-somos.html">Quem Somos</a>
+      <a href="area-medica.html">Área Médica</a>
+      <a href="area-juridica.html">Jurídico</a>
+      <a href="blog.html">Blog</a>
+      <a href="produtos.html">Loja</a>
+      <a href="contato.html">Contato</a>
+      <a href="seja-associado.html" class="btn btn--gold">Seja Associado</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== INTERNAL HERO ========== -->
+    <section class="hero hero--internal">
+      <div class="hero__bg"></div>
+      <div class="container hero__content">
+        <nav class="breadcrumb page-enter" aria-label="Breadcrumb">
+          <a href="index.html">Início</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span aria-current="page">Blog</span>
+        </nav>
+        <span class="section__overline page-enter">Conhecimento é cuidado</span>
+        <h1 class="hero__title page-enter" style="font-size: var(--text-4xl);">Blog</h1>
+        <p class="hero__subtitle page-enter">
+          Artigos educativos sobre cannabis medicinal, ciência, legislação e bem-estar. Informação acessível e baseada em evidências para pacientes, familiares e profissionais de saúde.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== BLOG SEARCH ========== -->
+    <section class="section section--sm" style="padding-top: 0;">
+      <div class="container">
+        <div class="blog-search reveal">
+          <svg class="blog-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="search" class="blog-search__input" placeholder="Buscar artigos..." aria-label="Buscar artigos no blog">
+        </div>
+
+        <!-- ========== BLOG FILTERS ========== -->
+        <div class="blog-filters reveal" role="group" aria-label="Filtros de categoria">
+          <button class="blog-filter blog-filter--active" data-filter="todos">Todos</button>
+          <button class="blog-filter" data-filter="ciencia">Ciência &amp; Pesquisas</button>
+          <button class="blog-filter" data-filter="saude">Saúde &amp; Bem-estar</button>
+          <button class="blog-filter" data-filter="juridico">Jurídico</button>
+          <button class="blog-filter" data-filter="historia">História &amp; Ancestralidade</button>
+          <button class="blog-filter" data-filter="guia">Guia do Associado</button>
+        </div>
+
+        <!-- ========== HERO CARD (Featured Article) ========== -->
+        <a href="artigo.html" class="blog-hero-card reveal" aria-label="Ler artigo em destaque: Sistema Endocanabinoide">
+          <div class="blog-hero-card__image" style="background: linear-gradient(135deg, var(--color-green-deep) 0%, var(--color-green-mid) 50%, var(--color-earth) 100%);">
+            <!-- Leaf SVG icon -->
+            <svg viewBox="0 0 80 80" width="80" height="80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M40 70V30"/>
+              <path d="M40 30c-10-18-30-28-35-26 2 20 18 32 35 34"/>
+              <path d="M40 30c10-18 30-28 35-26-2 20-18 32-35 34"/>
+              <path d="M40 48c-8-6-22-8-30-2 4 12 16 18 30 10"/>
+              <path d="M40 48c8-6 22-8 30-2-4 12-16 18-30 10"/>
+              <path d="M40 20c-5-10-16-18-24-18 1 12 10 22 24 24"/>
+              <path d="M40 20c5-10 16-18 24-18-1 12-10 22-24 24"/>
+            </svg>
+          </div>
+          <div class="blog-hero-card__body">
+            <span class="blog-hero-card__badge badge--ciencia">Ciência &amp; Pesquisas</span>
+            <h2 class="blog-hero-card__title">Sistema Endocanabinoide: O que a ciência já sabe sobre o potencial terapêutico da cannabis</h2>
+            <p class="blog-hero-card__excerpt">
+              Descubra como o sistema endocanabinoide funciona no corpo humano e por que a cannabis medicinal tem se mostrado uma aliada promissora no tratamento de diversas condições de saúde.
+            </p>
+            <div class="blog-hero-card__meta">
+              <span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                12 Abr 2026
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                8 min de leitura
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- ========== BLOG GRID ========== -->
+        <div class="blog-grid">
+
+          <!-- Card 1: Ciência -->
+          <article class="blog-card reveal" data-category="ciencia">
+            <div class="blog-card__image" style="background: linear-gradient(135deg, var(--color-green-deep) 0%, var(--color-green-mid) 50%, var(--color-green-light) 100%);">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M24 40V16"/>
+                <path d="M24 16c-6-10-18-16-22-14 2 12 10 20 22 20"/>
+                <path d="M24 16c6-10 18-16 22-14-2 12-10 20-22 20"/>
+                <path d="M24 28c-5-4-14-5-18-1 3 8 10 11 18 6"/>
+                <path d="M24 28c5-4 14-5 18-1-3 8-10 11-18 6"/>
+              </svg>
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge badge--ciencia">Ciência &amp; Pesquisas</span>
+              <h3 class="blog-card__title">CBD e epilepsia: revisão dos estudos clínicos mais recentes</h3>
+              <p class="blog-card__excerpt">Uma análise das evidências científicas sobre o uso do canabidiol no tratamento de epilepsias refratárias em crianças e adultos.</p>
+              <div class="blog-card__meta">
+                <span>8 Abr 2026</span>
+                <span>6 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Saúde -->
+          <article class="blog-card reveal" data-category="saude">
+            <div class="blog-card__image" style="background: linear-gradient(135deg, var(--color-green-pale) 0%, var(--color-earth-light) 50%, var(--color-earth) 100%);">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 38h32"/>
+                <path d="M12 38V18l12-10 12 10v20"/>
+                <rect x="18" y="24" width="12" height="14" rx="1"/>
+                <path d="M24 24v14"/>
+                <path d="M18 31h12"/>
+              </svg>
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge badge--saude">Saúde &amp; Bem-estar</span>
+              <h3 class="blog-card__title">Cannabis e qualidade do sono: mitos e verdades</h3>
+              <p class="blog-card__excerpt">Entenda o que a ciência diz sobre a relação entre cannabis medicinal e os distúrbios do sono, incluindo insônia e apneia.</p>
+              <div class="blog-card__meta">
+                <span>3 Abr 2026</span>
+                <span>5 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Jurídico -->
+          <article class="blog-card reveal" data-category="juridico">
+            <div class="blog-card__image" style="background: linear-gradient(135deg, var(--color-earth) 0%, var(--color-earth-light) 50%, rgba(200, 168, 130, 0.4) 100%);">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M24 6L8 14v4h32v-4L24 6z"/>
+                <path d="M12 18v16M20 18v16M28 18v16M36 18v16"/>
+                <path d="M6 34h36v4H6z"/>
+                <circle cx="24" cy="10" r="2"/>
+              </svg>
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge badge--juridico">Jurídico</span>
+              <h3 class="blog-card__title">Nova regulamentação da ANVISA: o que muda para pacientes</h3>
+              <p class="blog-card__excerpt">Análise das mudanças mais recentes na regulamentação da ANVISA sobre cannabis medicinal e como elas impactam o acesso ao tratamento.</p>
+              <div class="blog-card__meta">
+                <span>28 Mar 2026</span>
+                <span>7 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: História -->
+          <article class="blog-card reveal" data-category="historia">
+            <div class="blog-card__image" style="background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-soft) 40%, var(--color-earth) 100%);">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M24 44V20"/>
+                <path d="M24 20c-8-12-22-18-20-16 4 14 12 22 20 22"/>
+                <path d="M24 20c8-12 22-18 20-16-4 14-12 22-20 22"/>
+                <path d="M24 32c-6-4-16-4-20 0 4 8 12 10 20 4"/>
+                <path d="M24 32c6-4 16-4 20 0-4 8-12 10-20 4"/>
+              </svg>
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge badge--historia">História &amp; Ancestralidade</span>
+              <h3 class="blog-card__title">A diamba no Brasil: raízes africanas de uma planta sagrada</h3>
+              <p class="blog-card__excerpt">Uma viagem pelas origens africanas da cannabis no Brasil e seu significado cultural, espiritual e medicinal para os povos que a trouxeram.</p>
+              <div class="blog-card__meta">
+                <span>22 Mar 2026</span>
+                <span>10 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Guia -->
+          <article class="blog-card reveal" data-category="guia">
+            <div class="blog-card__image" style="background: linear-gradient(135deg, var(--color-green-mid) 0%, var(--color-green-light) 50%, var(--color-green-pale) 100%);">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 6h12c2 0 4 2 4 4v28c0-2-2-3-4-3H8V6z"/>
+                <path d="M40 6H28c-2 0-4 2-4 4v28c0-2 2-3 4-3h12V6z"/>
+                <path d="M14 14h2M14 20h2M14 26h2"/>
+                <path d="M32 14h2M32 20h2M32 26h2"/>
+              </svg>
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge badge--guia">Guia do Associado</span>
+              <h3 class="blog-card__title">Primeiro passo: como iniciar seu tratamento com cannabis medicinal</h3>
+              <p class="blog-card__excerpt">Guia prático para quem está começando: da consulta médica à obtenção do produto, tudo o que você precisa saber para iniciar com segurança.</p>
+              <div class="blog-card__meta">
+                <span>15 Mar 2026</span>
+                <span>9 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Saúde -->
+          <article class="blog-card reveal" data-category="saude">
+            <div class="blog-card__image" style="background: linear-gradient(135deg, var(--color-green-pale) 0%, rgba(216, 243, 220, 0.6) 50%, var(--color-offwhite) 100%);">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M24 40V16"/>
+                <path d="M24 16c-6-10-18-16-22-14 2 12 10 20 22 20"/>
+                <path d="M24 16c6-10 18-16 22-14-2 12-10 20-22 20"/>
+                <path d="M24 28c-5-4-14-5-18-1 3 8 10 11 18 6"/>
+                <path d="M24 28c5-4 14-5 18-1-3 8-10 11-18 6"/>
+              </svg>
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge badge--saude">Saúde &amp; Bem-estar</span>
+              <h3 class="blog-card__title">Ansiedade e cannabis medicinal: quando o tratamento é indicado</h3>
+              <p class="blog-card__excerpt">Compreenda em quais situações a cannabis medicinal pode ser uma opção terapêutica para transtornos de ansiedade e o que considerar antes de iniciar.</p>
+              <div class="blog-card__meta">
+                <span>8 Mar 2026</span>
+                <span>6 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ========== PAGINATION ========== -->
+        <nav class="blog-pagination reveal" aria-label="Paginação do blog">
+          <button class="blog-pagination__btn blog-pagination__btn--arrow" disabled aria-label="Página anterior">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          <button class="blog-pagination__btn blog-pagination__btn--active" aria-label="Página 1" aria-current="page">1</button>
+          <button class="blog-pagination__btn" aria-label="Página 2">2</button>
+          <button class="blog-pagination__btn" aria-label="Página 3">3</button>
+          <button class="blog-pagination__btn blog-pagination__btn--arrow" aria-label="Próxima página">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </nav>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid footer__grid--expanded">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="Diamba Sagrada — Página Inicial">
+            <img src="img/logo.png" alt="Logo Diamba Sagrada" width="40" height="40">
+            <span>Diamba Sagrada</span>
+          </a>
+          <p class="footer__desc">
+            Associação de pacientes dedicada ao acesso seguro, legal e humanizado à cannabis medicinal no Brasil.
+          </p>
+          <p class="footer__slogan">Cultivar é direito. Tratar é dignidade.</p>
+        </div>
+
+        <div class="footer__nav">
+          <h4 class="footer__heading">Navegação</h4>
+          <ul class="footer__list">
+            <li><a href="index.html" class="footer__link">Início</a></li>
+            <li><a href="quem-somos.html" class="footer__link">Quem Somos</a></li>
+            <li><a href="area-medica.html" class="footer__link">Área Médica</a></li>
+            <li><a href="area-juridica.html" class="footer__link">Jurídico</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__nav">
+          <h4 class="footer__heading">Conteúdo</h4>
+          <ul class="footer__list">
+            <li><a href="blog.html" class="footer__link">Blog</a></li>
+            <li><a href="produtos.html" class="footer__link">Loja</a></li>
+            <li><a href="contato.html" class="footer__link">Contato</a></li>
+            <li><a href="seja-associado.html" class="footer__link">Seja Associado</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <h4 class="footer__heading">Contato</h4>
+          <ul class="footer__list">
+            <li>
+              <a href="mailto:contato@diambasagrada.org.br" class="footer__link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 0.5rem;">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="M22 4L12 13 2 4"/>
+                </svg>
+                contato@diambasagrada.org.br
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/diambasagrada" target="_blank" rel="noopener noreferrer" class="footer__link" aria-label="Instagram da Diamba Sagrada">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 0.5rem;">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <circle cx="12" cy="12" r="5"/>
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                </svg>
+                @diambasagrada
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Diamba Sagrada. Todos os direitos reservados.</p>
+        <div class="footer__bottom-links">
+          <a href="politica-privacidade.html">Política de Privacidade</a>
+          <a href="termos-de-uso.html">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- ========== WHATSAPP FLOAT ========== -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de saber mais sobre a Diamba Sagrada." class="whatsapp-float__btn" target="_blank" rel="noopener noreferrer" aria-label="Conversar pelo WhatsApp">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+    <span class="whatsapp-float__label">Fale conosco</span>
+  </div>
+
+  <!-- ========== COOKIE CONSENT ========== -->
+  <div class="cookie-consent" role="dialog" aria-label="Consentimento de cookies">
+    <div class="cookie-consent__inner">
+      <p class="cookie-consent__text">
+        Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa
+        <a href="politica-privacidade.html">Política de Privacidade</a>.
+      </p>
+      <div class="cookie-consent__actions">
+        <button class="cookie-consent__btn cookie-consent__btn--accept">Aceitar</button>
+        <button class="cookie-consent__btn cookie-consent__btn--customize">Configurar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

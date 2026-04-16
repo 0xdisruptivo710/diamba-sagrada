@@ -1,7 +1,9 @@
 /* ==========================================================================
    DIAMBA SAGRADA — Main JavaScript
    Handles: navigation, scroll animations, accordion, multi-step form,
-            page-load animations, and intersection observer reveals.
+            page-load animations, intersection observer reveals,
+            blog filters, contact form validation, back-to-top, cookie consent,
+            product modal, tooltips, WhatsApp float, drag-and-drop upload.
    ========================================================================== */
 
 (function () {
@@ -10,11 +12,10 @@
   /* ------------------------------------------------------------------------
      1. NAVIGATION — Scroll-based background + Mobile menu
      ------------------------------------------------------------------------ */
-  const nav = document.querySelector('.nav');
-  const navToggle = document.querySelector('.nav__toggle');
-  const navMobile = document.querySelector('.nav__mobile');
+  var nav = document.querySelector('.nav');
+  var navToggle = document.querySelector('.nav__toggle');
+  var navMobile = document.querySelector('.nav__mobile');
 
-  // Add background on scroll
   function handleNavScroll() {
     if (!nav) return;
     if (window.scrollY > 60) {
@@ -25,19 +26,16 @@
   }
 
   window.addEventListener('scroll', handleNavScroll, { passive: true });
-  handleNavScroll(); // Run on load
+  handleNavScroll();
 
-  // Mobile menu toggle
   if (navToggle && navMobile) {
     navToggle.addEventListener('click', function () {
-      const isOpen = navMobile.classList.contains('nav__mobile--open');
+      var isOpen = navMobile.classList.contains('nav__mobile--open');
       navMobile.classList.toggle('nav__mobile--open');
       navToggle.setAttribute('aria-expanded', String(!isOpen));
-      // Prevent body scroll when menu is open
       document.body.style.overflow = isOpen ? '' : 'hidden';
     });
 
-    // Close menu when a link is clicked
     navMobile.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navMobile.classList.remove('nav__mobile--open');
@@ -54,7 +52,6 @@
     var reveals = document.querySelectorAll('.reveal');
     if (!reveals.length) return;
 
-    // Check for reduced motion preference
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       reveals.forEach(function (el) {
@@ -90,7 +87,6 @@
     var elements = document.querySelectorAll('.page-enter');
     if (!elements.length) return;
 
-    // Small delay to let browser paint first
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         elements.forEach(function (el) {
@@ -135,18 +131,20 @@
       trigger.addEventListener('click', function () {
         var isOpen = item.classList.contains('accordion__item--open');
 
-        // Close all other items
-        items.forEach(function (otherItem) {
-          if (otherItem !== item) {
-            otherItem.classList.remove('accordion__item--open');
-            var otherContent = otherItem.querySelector('.accordion__content');
-            if (otherContent) otherContent.style.maxHeight = '0';
-            var otherTrigger = otherItem.querySelector('.accordion__trigger');
-            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
-          }
-        });
+        // Close siblings within same accordion container
+        var parent = item.closest('.accordion');
+        if (parent) {
+          parent.querySelectorAll('.accordion__item').forEach(function (otherItem) {
+            if (otherItem !== item) {
+              otherItem.classList.remove('accordion__item--open');
+              var otherContent = otherItem.querySelector('.accordion__content');
+              if (otherContent) otherContent.style.maxHeight = '0';
+              var otherTrigger = otherItem.querySelector('.accordion__trigger');
+              if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
 
-        // Toggle current item
         if (isOpen) {
           item.classList.remove('accordion__item--open');
           content.style.maxHeight = '0';
@@ -172,10 +170,8 @@
     var progressBar = document.querySelector('.stepper__progress');
     var currentStep = 0;
 
-    // Show the first step
     updateStep(0);
 
-    // Next buttons
     form.querySelectorAll('[data-action="next"]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (validateStep(currentStep)) {
@@ -184,59 +180,44 @@
       });
     });
 
-    // Previous buttons
     form.querySelectorAll('[data-action="prev"]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         goToStep(currentStep - 1);
       });
     });
 
-    // Form submission
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (validateStep(currentStep)) {
-        // Show confirmation
         goToStep(steps.length - 1);
       }
     });
 
     function goToStep(index) {
       if (index < 0 || index >= steps.length) return;
-
-      // Animate out current step
       steps[currentStep].classList.add('form-step--exit-left');
       steps[currentStep].classList.remove('form-step--active');
-
       currentStep = index;
       updateStep(currentStep);
     }
 
     function updateStep(index) {
-      // Update form steps visibility
       steps.forEach(function (step, i) {
         step.classList.remove('form-step--active', 'form-step--exit-left');
-        if (i === index) {
-          step.classList.add('form-step--active');
-        }
+        if (i === index) step.classList.add('form-step--active');
       });
 
-      // Update stepper
       stepperSteps.forEach(function (step, i) {
         step.classList.remove('stepper__step--active', 'stepper__step--done');
-        if (i < index) {
-          step.classList.add('stepper__step--done');
-        } else if (i === index) {
-          step.classList.add('stepper__step--active');
-        }
+        if (i < index) step.classList.add('stepper__step--done');
+        else if (i === index) step.classList.add('stepper__step--active');
       });
 
-      // Update progress bar
       if (progressBar) {
         var progress = (index / (steps.length - 1)) * 100;
         progressBar.style.width = progress + '%';
       }
 
-      // Scroll to form top on step change
       var formTop = form.getBoundingClientRect().top + window.scrollY - 120;
       if (index > 0) {
         window.scrollTo({ top: formTop, behavior: 'smooth' });
@@ -259,7 +240,6 @@
           if (errorEl) errorEl.classList.remove('form-error--visible');
         }
 
-        // Email validation
         if (input.type === 'email' && input.value.trim()) {
           var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(input.value.trim())) {
@@ -273,7 +253,6 @@
         }
       });
 
-      // Check consent checkbox on last real step
       var checkbox = step.querySelector('input[type="checkbox"][required]');
       if (checkbox && !checkbox.checked) {
         valid = false;
@@ -284,7 +263,6 @@
       return valid;
     }
 
-    // Real-time validation: clear errors on input
     form.querySelectorAll('.form-input').forEach(function (input) {
       input.addEventListener('input', function () {
         this.classList.remove('form-input--error');
@@ -295,7 +273,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     7. FILE UPLOAD — Visual feedback for file selection
+     7. FILE UPLOAD — Visual feedback + drag-and-drop
      ------------------------------------------------------------------------ */
   function initFileUpload() {
     var uploads = document.querySelectorAll('.file-upload');
@@ -309,7 +287,6 @@
         input.click();
       });
 
-      // Allow keyboard activation
       upload.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -323,11 +300,391 @@
           upload.style.borderColor = 'var(--color-green-deep)';
         }
       });
+
+      // Drag and drop
+      ['dragenter', 'dragover'].forEach(function (event) {
+        upload.addEventListener(event, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          upload.classList.add('file-upload--drag-active');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(function (event) {
+        upload.addEventListener(event, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          upload.classList.remove('file-upload--drag-active');
+        });
+      });
+
+      upload.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files.length > 0) {
+          input.files = files;
+          textEl.innerHTML = '<strong>' + files[0].name + '</strong> selecionado';
+          upload.style.borderColor = 'var(--color-green-deep)';
+        }
+      });
     });
   }
 
   /* ------------------------------------------------------------------------
-     8. INIT — Run all modules on DOMContentLoaded
+     8. BACK TO TOP BUTTON
+     ------------------------------------------------------------------------ */
+  function initBackToTop() {
+    var btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+
+    function toggleVisibility() {
+      if (window.scrollY > 400) {
+        btn.classList.add('back-to-top--visible');
+      } else {
+        btn.classList.remove('back-to-top--visible');
+      }
+    }
+
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    toggleVisibility();
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     9. COOKIE CONSENT BANNER
+     ------------------------------------------------------------------------ */
+  function initCookieConsent() {
+    var banner = document.querySelector('.cookie-consent');
+    if (!banner) return;
+
+    // Check if already accepted
+    if (localStorage.getItem('ds-cookies-accepted')) return;
+
+    // Show after a brief delay
+    setTimeout(function () {
+      banner.classList.add('cookie-consent--visible');
+    }, 1500);
+
+    var acceptBtn = banner.querySelector('.cookie-consent__btn--accept');
+    var customizeBtn = banner.querySelector('.cookie-consent__btn--customize');
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem('ds-cookies-accepted', 'true');
+        banner.classList.remove('cookie-consent--visible');
+      });
+    }
+
+    if (customizeBtn) {
+      customizeBtn.addEventListener('click', function () {
+        localStorage.setItem('ds-cookies-accepted', 'custom');
+        banner.classList.remove('cookie-consent--visible');
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------------
+     10. BLOG FILTERS — Category filtering with animation
+     ------------------------------------------------------------------------ */
+  function initBlogFilters() {
+    var filters = document.querySelectorAll('.blog-filter');
+    var cards = document.querySelectorAll('.blog-card[data-category]');
+    if (!filters.length || !cards.length) return;
+
+    filters.forEach(function (filter) {
+      filter.addEventListener('click', function () {
+        var category = this.getAttribute('data-filter');
+
+        // Update active filter
+        filters.forEach(function (f) { f.classList.remove('blog-filter--active'); });
+        this.classList.add('blog-filter--active');
+
+        // Filter cards with animation
+        cards.forEach(function (card) {
+          var cardCategory = card.getAttribute('data-category');
+          if (category === 'todos' || cardCategory === category) {
+            card.style.display = '';
+            // Trigger reflow then animate in
+            requestAnimationFrame(function () {
+              card.classList.remove('blog-card--hidden');
+            });
+          } else {
+            card.classList.add('blog-card--hidden');
+            // After animation, hide
+            setTimeout(function () {
+              if (card.classList.contains('blog-card--hidden')) {
+                card.style.display = 'none';
+              }
+            }, 400);
+          }
+        });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     11. CONTACT FORM — Real-time validation with visual feedback
+     ------------------------------------------------------------------------ */
+  function initContactForm() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+
+    var inputs = form.querySelectorAll('.form-input[data-validate]');
+
+    // Real-time validation
+    inputs.forEach(function (input) {
+      input.addEventListener('blur', function () {
+        validateField(this);
+      });
+
+      input.addEventListener('input', function () {
+        // Clear error state on typing
+        this.classList.remove('form-input--invalid', 'form-input--shake');
+        var feedback = this.parentElement.querySelector('.form-feedback');
+        if (feedback) feedback.classList.remove('form-feedback--visible');
+      });
+    });
+
+    // Form submission
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allValid = true;
+
+      inputs.forEach(function (input) {
+        if (!validateField(input)) {
+          allValid = false;
+        }
+      });
+
+      // Check LGPD checkbox
+      var lgpdCheck = form.querySelector('#lgpd-consent');
+      if (lgpdCheck && !lgpdCheck.checked) {
+        allValid = false;
+        var errorEl = lgpdCheck.closest('.form-group').querySelector('.form-feedback');
+        if (errorEl) {
+          errorEl.classList.add('form-feedback--visible', 'form-feedback--error');
+          errorEl.querySelector('span').textContent = 'Você precisa aceitar a política de privacidade.';
+        }
+      }
+
+      if (allValid) {
+        // Show success state
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn) {
+          submitBtn.textContent = 'Mensagem enviada!';
+          submitBtn.classList.remove('btn--primary');
+          submitBtn.classList.add('btn--gold');
+          submitBtn.disabled = true;
+        }
+        // Reset after 3 seconds
+        setTimeout(function () {
+          form.reset();
+          if (submitBtn) {
+            submitBtn.textContent = 'Enviar mensagem';
+            submitBtn.classList.add('btn--primary');
+            submitBtn.classList.remove('btn--gold');
+            submitBtn.disabled = false;
+          }
+          // Clear all validation states
+          inputs.forEach(function (input) {
+            input.classList.remove('form-input--valid', 'form-input--invalid');
+            var fb = input.parentElement.querySelector('.form-feedback');
+            if (fb) fb.classList.remove('form-feedback--visible');
+          });
+        }, 3000);
+      } else {
+        // Shake the first invalid field
+        var firstInvalid = form.querySelector('.form-input--invalid');
+        if (firstInvalid) {
+          firstInvalid.classList.add('form-input--shake');
+          firstInvalid.focus();
+          setTimeout(function () {
+            firstInvalid.classList.remove('form-input--shake');
+          }, 500);
+        }
+      }
+    });
+
+    function validateField(input) {
+      var type = input.getAttribute('data-validate');
+      var value = input.value.trim();
+      var feedback = input.parentElement.querySelector('.form-feedback');
+      var feedbackText = feedback ? feedback.querySelector('span') : null;
+      var isValid = true;
+
+      if (input.hasAttribute('required') && !value) {
+        isValid = false;
+        if (feedbackText) feedbackText.textContent = 'Este campo é obrigatório.';
+      } else if (type === 'email' && value) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          isValid = false;
+          if (feedbackText) feedbackText.textContent = 'Insira um e-mail válido.';
+        }
+      } else if (type === 'name' && value && value.length < 2) {
+        isValid = false;
+        if (feedbackText) feedbackText.textContent = 'Nome muito curto.';
+      }
+
+      // Update visual state
+      input.classList.remove('form-input--valid', 'form-input--invalid');
+      if (feedback) {
+        feedback.classList.remove('form-feedback--visible', 'form-feedback--success', 'form-feedback--error');
+      }
+
+      if (!value && !input.hasAttribute('required')) {
+        // Empty optional field — no feedback
+        return true;
+      }
+
+      if (isValid && value) {
+        input.classList.add('form-input--valid');
+        if (feedback) {
+          feedback.classList.add('form-feedback--visible', 'form-feedback--success');
+          if (feedbackText) feedbackText.textContent = 'Parece bom!';
+        }
+      } else if (!isValid) {
+        input.classList.add('form-input--invalid');
+        if (feedback) {
+          feedback.classList.add('form-feedback--visible', 'form-feedback--error');
+        }
+      }
+
+      return isValid;
+    }
+  }
+
+  /* ------------------------------------------------------------------------
+     12. PRODUCT MODAL
+     ------------------------------------------------------------------------ */
+  function initProductModal() {
+    var modal = document.querySelector('.product-modal');
+    if (!modal) return;
+
+    var overlay = modal.querySelector('.product-modal__overlay');
+    var closeBtn = modal.querySelector('.product-modal__close');
+    var modalName = modal.querySelector('.product-modal__name');
+    var modalCategory = modal.querySelector('.product-modal__category');
+    var modalPrice = modal.querySelector('.product-modal__price');
+    var modalDesc = modal.querySelector('.product-modal__desc');
+    var modalImage = modal.querySelector('.product-modal__image');
+
+    // Open modal buttons
+    document.querySelectorAll('[data-open-product]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = this.closest('.product-card');
+        if (!card) return;
+
+        // Populate modal
+        if (modalName) modalName.textContent = card.querySelector('.product-card__name').textContent;
+        if (modalCategory) modalCategory.textContent = card.querySelector('.product-card__category').textContent;
+        if (modalPrice) modalPrice.textContent = card.querySelector('.product-card__price').textContent;
+        if (modalDesc) modalDesc.textContent = card.getAttribute('data-description') || '';
+        if (modalImage) {
+          modalImage.style.background = card.querySelector('.product-card__image').style.background;
+        }
+
+        modal.classList.add('product-modal--open');
+        document.body.style.overflow = 'hidden';
+
+        // Focus trap
+        closeBtn.focus();
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('product-modal--open');
+      document.body.style.overflow = '';
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('product-modal--open')) {
+        closeModal();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     13. BLOG SEARCH — Expand animation on focus
+     ------------------------------------------------------------------------ */
+  function initBlogSearch() {
+    var searchInput = document.querySelector('.blog-search__input');
+    var searchWrap = document.querySelector('.blog-search');
+    if (!searchInput || !searchWrap) return;
+
+    searchInput.addEventListener('focus', function () {
+      searchWrap.style.maxWidth = '500px';
+    });
+
+    searchInput.addEventListener('blur', function () {
+      if (!this.value) {
+        searchWrap.style.maxWidth = '400px';
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     14. ARTICLE TOC — Active state on scroll
+     ------------------------------------------------------------------------ */
+  function initArticleTOC() {
+    var tocLinks = document.querySelectorAll('.article-toc__link');
+    var headings = [];
+    if (!tocLinks.length) return;
+
+    tocLinks.forEach(function (link) {
+      var targetId = link.getAttribute('href');
+      if (targetId) {
+        var heading = document.querySelector(targetId);
+        if (heading) headings.push({ el: heading, link: link });
+      }
+    });
+
+    if (!headings.length) return;
+
+    function updateActive() {
+      var scrollPos = window.scrollY + 120;
+      var current = headings[0];
+
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].el.offsetTop <= scrollPos) {
+          current = headings[i];
+        }
+      }
+
+      tocLinks.forEach(function (l) { l.classList.remove('article-toc__link--active'); });
+      if (current) current.link.classList.add('article-toc__link--active');
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  }
+
+  /* ------------------------------------------------------------------------
+     15. SKELETON LOADING — Simulate loading states
+     ------------------------------------------------------------------------ */
+  function initSkeletonLoading() {
+    var skeletonContainers = document.querySelectorAll('[data-skeleton]');
+    if (!skeletonContainers.length) return;
+
+    // Remove skeletons after content loads (simulated for static site)
+    setTimeout(function () {
+      skeletonContainers.forEach(function (container) {
+        var skeletons = container.querySelectorAll('.skeleton');
+        skeletons.forEach(function (s) { s.remove(); });
+        // Show actual content
+        var content = container.querySelectorAll('[data-skeleton-content]');
+        content.forEach(function (c) { c.style.display = ''; });
+      });
+    }, 800);
+  }
+
+  /* ------------------------------------------------------------------------
+     16. INIT — Run all modules on DOMContentLoaded
      ------------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', function () {
     initPageLoad();
@@ -336,5 +693,13 @@
     initAccordion();
     initMultiStepForm();
     initFileUpload();
+    initBackToTop();
+    initCookieConsent();
+    initBlogFilters();
+    initContactForm();
+    initProductModal();
+    initBlogSearch();
+    initArticleTOC();
+    initSkeletonLoading();
   });
 })();
