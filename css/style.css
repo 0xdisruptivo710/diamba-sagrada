@@ -5277,3 +5277,58 @@ body, h1, h2, h3, p, a, span {
   .hero--cinematic .hero__status-dot { animation: none; }
 }
 
+/* ==========================================================================
+   M18. NAV INVERTIDO sobre o hero cinematográfico
+   Quando o body tem .has-cinematic-hero E o nav ainda não rolou (.nav sem
+   .nav--scrolled), o vídeo escuro cobre o fundo. Inverte cores do nav
+   para paper/gold para legibilidade. Quando rola, volta ao tema claro.
+   ========================================================================== */
+
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__logo,
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__logo span {
+  color: var(--paper);
+  text-shadow: 0 1px 12px rgba(20, 39, 30, 0.5);
+}
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__logo:hover {
+  color: var(--gold-leaf);
+}
+
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__link {
+  color: rgba(241, 232, 211, 0.92);
+  text-shadow: 0 1px 8px rgba(20, 39, 30, 0.45);
+}
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__link:hover {
+  color: var(--gold-leaf);
+}
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__link--active {
+  color: var(--gold-leaf);
+}
+
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__links::before {
+  color: rgba(241, 232, 211, 0.7);
+  border-right-color: rgba(241, 232, 211, 0.3);
+}
+
+/* CTA "Seja Associado" — verde-escuro fica invisível no vídeo, troca para
+   outlined-gold (fundo translúcido + borda dourada + texto dourado) */
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__cta {
+  background-color: rgba(20, 39, 30, 0.35);
+  color: var(--gold-leaf);
+  border: 1px solid var(--gold-leaf);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: none;
+}
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__cta:hover {
+  background-color: var(--gold-leaf);
+  color: var(--forest-deep);
+  border-color: var(--gold-leaf);
+  box-shadow: 0 2px 14px rgba(183, 144, 47, 0.35);
+}
+
+/* Mobile toggle bars — paper sobre vídeo escuro */
+body.has-cinematic-hero .nav:not(.nav--scrolled) .nav__toggle span {
+  background-color: var(--paper);
+  box-shadow: 0 1px 6px rgba(20, 39, 30, 0.5);
+}
+
