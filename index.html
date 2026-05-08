@@ -7,7 +7,7 @@
   <meta name="description" content="A Diamba Sagrada é uma associação de pacientes que acredita que o cuidado com a saúde é um direito de todos. Cultivar é direito. Tratar é dignidade.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -53,7 +53,7 @@
 
   <main>
 
-    <!-- ========== HERO ========== -->
+    <!-- ========== HERO — FOLIO I ========== -->
     <section class="hero">
       <div class="hero__bg"></div>
 
@@ -87,40 +87,81 @@
       </div>
 
       <div class="container hero__content">
-        <span class="hero__badge page-enter">Associação de Pacientes</span>
-        <h1 class="hero__title page-enter">
-          Cultivar é direito.<br>
-          Tratar é <span class="accent">dignidade</span>.
-        </h1>
-        <p class="hero__subtitle page-enter">
-          A Diamba Sagrada é uma associação de pacientes que acredita que o cuidado com a saúde é um direito de todos.
-        </p>
-        <div class="btn-group page-enter" style="justify-content:center">
-          <a href="seja-associado.html" class="btn btn--primary btn--lg">Quero me associar</a>
-          <a href="#jornada" class="btn btn--secondary btn--lg">Como funciona</a>
+
+        <!-- Editorial folio strip -->
+        <div class="hero__folio page-enter" aria-hidden="true">
+          <span class="mark">Fólio I</span>
+          <span class="sep" role="presentation"></span>
+          <em>Codex Diamba</em>
+          <span class="sep" role="presentation"></span>
+          <span class="anno">Anno MMXXIV</span>
         </div>
-        <p class="hero__disclaimer page-enter">
-          Atualmente em fase de construção. Não fornecemos óleo neste momento.
-        </p>
+
+        <div>
+          <h1 class="hero__title page-enter">
+            Cultivar é direito.<br>
+            Tratar é <span class="accent">dignidade</span>.
+          </h1>
+
+          <p class="hero__subtitle page-enter">
+            A Diamba Sagrada é uma associação de pacientes que acredita que o cuidado com a saúde é um direito de todos — feito de escuta, de ciência e de memória ancestral.
+          </p>
+
+          <div class="btn-group page-enter">
+            <a href="seja-associado.html" class="btn btn--primary btn--lg">Quero me associar</a>
+            <a href="#jornada" class="inline-link">Como funciona a jornada</a>
+          </div>
+        </div>
+
+        <!-- Marginalia column — replaces the centered disclaimer cliché -->
+        <aside class="hero__margin page-enter" aria-label="Notas de margem">
+          <div class="hero__margin-art" aria-hidden="true">
+            <svg viewBox="0 0 200 300" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M100 290V100"/>
+              <path d="M100 100c-15-30-50-55-85-55 5 35 35 65 85 70"/>
+              <path d="M100 100c15-30 50-55 85-55-5 35-35 65-85 70"/>
+              <path d="M100 160c-20-15-55-18-78-5 10 22 40 30 78 18"/>
+              <path d="M100 160c20-15 55-18 78-5-10 22-40 30-78 18"/>
+              <path d="M100 220c-15-12-42-15-62-5 8 20 35 30 62 18"/>
+              <path d="M100 220c15-12 42-15 62-5-8 20-35 30-62 18"/>
+            </svg>
+          </div>
+          <p class="marginalia">
+            <strong>Nota de Margem</strong>
+            Esta associação encontra-se em fase de construção. Não fornecemos óleo neste momento — caminhamos com cuidado, no tempo certo.
+          </p>
+          <p class="marginalia">
+            <strong>Manifesto</strong>
+            <em>“Que o saber das ervas, a escuta dos médicos e o amparo do direito caminhem juntos — pois a cura é trabalho coletivo.”</em>
+          </p>
+        </aside>
       </div>
     </section>
 
-    <!-- ========== PILLARS ========== -->
+    <!-- ========== PILLARS — TRÊS VERSOS ILUMINADOS ========== -->
     <section class="section pillars">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__overline">O que nos guia</span>
-          <h2 class="section__title">Três pilares do nosso cuidado</h2>
+          <span class="section__overline">Articulus Primus</span>
+          <h2 class="section__title">Três pilares do cuidado</h2>
         </div>
 
         <div class="grid grid--3 stagger">
-          <!-- Card 1: Acolhimento -->
+          <!-- I — Acolhimento — Hand-drawn chalice with leaf -->
           <article class="card reveal">
             <div class="card__icon">
-              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M24 38c-6-4-16-10-16-18a8 8 0 0 1 8-8c3 0 5.5 1.5 8 4.5 2.5-3 5-4.5 8-4.5a8 8 0 0 1 8 8c0 8-10 14-16 18z"/>
-                <path d="M6 24c-2 1-4 3-4 6 0 4 4 7 10 9"/>
-                <path d="M42 24c2 1 4 3 4 6 0 4-4 7-10 9"/>
+              <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- Chalice -->
+                <path d="M16 14c0 12 7 22 16 22s16-10 16-22"/>
+                <path d="M16 14h32"/>
+                <path d="M32 36v12"/>
+                <path d="M22 50h20"/>
+                <path d="M20 53h24"/>
+                <!-- Leaf inside the chalice opening -->
+                <path d="M32 14c-3-4-9-6-15-5 2 6 8 9 15 9"/>
+                <path d="M32 14c3-4 9-6 15-5-2 6-8 9-15 9"/>
+                <!-- Steam / breath -->
+                <path d="M28 6c0 2 1 3 2 4M32 4c0 2 1 3 2 4M36 6c0 2 1 3 2 4" opacity="0.55"/>
               </svg>
             </div>
             <h3 class="card__title">Acolhimento</h3>
@@ -129,17 +170,20 @@
             </p>
           </article>
 
-          <!-- Card 2: Orientação Médica -->
+          <!-- II — Orientação Médica — Hand-drawn mortar & pestle -->
           <article class="card reveal">
             <div class="card__icon">
-              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M24 4v8M24 36v8M20 8h8M20 40h8"/>
-                <path d="M14 18c-2-4-5-6-9-6 1 5 4 8 9 10"/>
-                <path d="M14 18c2-4 5-6 9-6-1 5-4 8-9 10"/>
-                <path d="M34 18c2-4 5-6 9-6-1 5-4 8-9 10"/>
-                <path d="M34 18c-2-4-5-6-9-6 1 5 4 8 9 10"/>
-                <circle cx="24" cy="24" r="5"/>
-                <path d="M22 22v4M24 22v4M26 22v4"/>
+              <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- Mortar -->
+                <path d="M14 32c0 10 7 18 18 18s18-8 18-18"/>
+                <path d="M12 32h40"/>
+                <path d="M18 50l3 6h22l3-6"/>
+                <!-- Pestle (diagonal) -->
+                <path d="M22 28L42 6"/>
+                <path d="M40 4l4 4"/>
+                <!-- Herb sprig inside -->
+                <path d="M28 36c2-4 4-6 8-6"/>
+                <path d="M30 38c-1-2 0-4 2-5M34 36c-1-2 1-4 3-4M37 33c-1-1 1-3 3-2" opacity="0.7"/>
               </svg>
             </div>
             <h3 class="card__title">Orientação Médica</h3>
@@ -148,15 +192,26 @@
             </p>
           </article>
 
-          <!-- Card 3: Suporte Jurídico -->
+          <!-- III — Suporte Jurídico — Hand-drawn asymmetric scale -->
           <article class="card reveal">
             <div class="card__icon">
-              <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M24 4L6 14v4h36v-4L24 4z"/>
-                <path d="M10 18v18M18 18v18M30 18v18M38 18v18"/>
-                <path d="M6 36h36v4H6z"/>
-                <path d="M24 10v4"/>
-                <circle cx="24" cy="8" r="2"/>
+              <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- Central staff -->
+                <path d="M32 8v44"/>
+                <circle cx="32" cy="8" r="2" fill="currentColor"/>
+                <!-- Crossbeam, slightly off-axis -->
+                <path d="M14 16L50 14"/>
+                <!-- Left pan (slightly heavier) -->
+                <path d="M14 16L8 32"/>
+                <path d="M14 16L20 32"/>
+                <path d="M6 32c0 4 3 6 8 6s8-2 8-6"/>
+                <!-- Right pan -->
+                <path d="M50 14L46 28"/>
+                <path d="M50 14L54 28"/>
+                <path d="M44 28c0 3 3 5 6 5s6-2 6-5"/>
+                <!-- Base -->
+                <path d="M22 52h20"/>
+                <path d="M20 55h24"/>
               </svg>
             </div>
             <h3 class="card__title">Suporte Jurídico</h3>
@@ -173,7 +228,7 @@
       <div class="container">
         <div class="vision__grid">
           <div class="vision__text reveal">
-            <span class="section__overline">Visão Integrativa</span>
+            <span class="section__overline">Articulus Secundus — Visão Integrativa</span>
             <h2 class="section__title">Um cuidado que respeita a totalidade do ser</h2>
             <p>
               Acreditamos que a verdadeira cura acontece quando olhamos para o ser humano de forma integral. Nossa abordagem une ciência contemporânea, escuta sensível e sabedoria ancestral para oferecer um cuidado que respeita a singularidade de cada pessoa.
@@ -181,13 +236,18 @@
             <p>
               Não tratamos apenas sintomas — acompanhamos histórias. Cada paciente é um universo, e nosso compromisso é caminhar ao lado, integrando corpo, mente e espírito no processo de cura.
             </p>
+
+            <blockquote class="codex-quote">
+              A cura nasce no encontro entre quem sofre, quem cuida, e a planta que atravessa séculos de memória.
+              <cite>Princípio da Diamba Sagrada</cite>
+            </blockquote>
           </div>
 
           <div class="vision__triad reveal" aria-label="Tríade integrativa: Corpo, Mente e Espírito">
             <div class="triad">
               <div class="triad__item triad__item--top">
                 <div class="triad__icon">
-                  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <circle cx="16" cy="7" r="4"/>
                     <path d="M10 14h12c1 0 2 1 2 2v4l-4 2v8h-4v-6h-4v6h-4v-8l-4-2v-4c0-1 1-2 2-2z"/>
                   </svg>
@@ -196,7 +256,7 @@
               </div>
               <div class="triad__item triad__item--left">
                 <div class="triad__icon">
-                  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M16 4C10 4 5 8.5 5 14c0 3 1.5 5.5 4 7.5V28h14v-6.5c2.5-2 4-4.5 4-7.5 0-5.5-5-10-11-10z"/>
                     <path d="M12 18c1 1.5 3 2.5 4 2.5s3-1 4-2.5"/>
                     <path d="M5 14h22"/>
@@ -207,7 +267,7 @@
               </div>
               <div class="triad__item triad__item--right">
                 <div class="triad__icon">
-                  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M16 28c-1-2-3-4-4-6-2-3-4-5-4-8a8 8 0 0 1 16 0c0 3-2 5-4 8-1 2-3 4-4 6z"/>
                     <path d="M16 10v6"/>
                     <path d="M13 13h6"/>
@@ -227,46 +287,46 @@
       </div>
     </section>
 
-    <!-- ========== PATIENT JOURNEY ========== -->
+    <!-- ========== PATIENT JOURNEY — ITINERARIUM ========== -->
     <section class="section journey" id="jornada">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__overline">Passo a passo</span>
+          <span class="section__overline">Articulus Tertius — Itinerarium</span>
           <h2 class="section__title">A jornada do paciente</h2>
         </div>
 
         <div class="timeline">
           <div class="timeline__step reveal">
             <div class="timeline__dot"></div>
-            <span class="timeline__number">Etapa 1</span>
+            <span class="timeline__number">Etapa I</span>
             <h3 class="timeline__title">Chegou ao lugar certo</h3>
             <p class="timeline__text">Você encontrou uma comunidade de acolhimento. Aqui, ninguém caminha sozinho — estamos juntos nessa jornada pela saúde e pelo bem-estar.</p>
           </div>
 
           <div class="timeline__step reveal">
             <div class="timeline__dot"></div>
-            <span class="timeline__number">Etapa 2</span>
+            <span class="timeline__number">Etapa II</span>
             <h3 class="timeline__title">Entenda seus direitos</h3>
             <p class="timeline__text">Orientação jurídica clara e acessível sobre cannabis medicinal no Brasil. Conheça as leis, regulamentações e seus direitos como paciente.</p>
           </div>
 
           <div class="timeline__step reveal">
             <div class="timeline__dot"></div>
-            <span class="timeline__number">Etapa 3</span>
+            <span class="timeline__number">Etapa III</span>
             <h3 class="timeline__title">Conecte-se com um médico</h3>
             <p class="timeline__text">Médicos parceiros prescritores que compreendem o potencial terapêutico da cannabis e trabalham com protocolos seguros e individualizados.</p>
           </div>
 
           <div class="timeline__step reveal">
             <div class="timeline__dot"></div>
-            <span class="timeline__number">Etapa 4</span>
+            <span class="timeline__number">Etapa IV</span>
             <h3 class="timeline__title">Envie sua receita</h3>
             <p class="timeline__text">Documentação necessária para acesso legal ao tratamento. Auxiliamos em todo o processo burocrático para que você se concentre no que importa: sua saúde.</p>
           </div>
 
           <div class="timeline__step reveal">
             <div class="timeline__dot"></div>
-            <span class="timeline__number">Etapa 5</span>
+            <span class="timeline__number">Etapa V</span>
             <h3 class="timeline__title">Faça parte da comunidade</h3>
             <p class="timeline__text">Suporte contínuo e rede de apoio. Grupos de acolhimento, informações atualizadas e uma comunidade que entende e apoia sua caminhada.</p>
           </div>
@@ -291,7 +351,6 @@
             <path d="M150 70c8-20 28-40 50-48-2 25-16 42-50 55"/>
             <path d="M150 360c-15-10-40-12-55-3 8 15 28 22 55 12"/>
             <path d="M150 360c15-10 40-12 55-3-8 15-28 22-55 12"/>
-            <!-- Root system -->
             <path d="M150 490c-10 0-30 5-40 15"/>
             <path d="M150 490c10 0 30 5 40 15"/>
             <path d="M150 490c-5 5-15 15-18 25"/>
@@ -302,8 +361,12 @@
         </div>
 
         <div class="ancestral__content reveal">
-          <span class="section__overline">Dimensão Ancestral</span>
+          <span class="section__overline">Articulus Quartus — Dimensão Ancestral</span>
           <h2 class="section__title">Uma planta com milhares de anos de história</h2>
+
+          <div class="codex-rule" aria-hidden="true">
+            <span class="codex-rule__glyph">❦</span>
+          </div>
 
           <div class="ancestral__text">
             <p>Muito antes de qualquer legislação moderna, a cannabis já era reconhecida como planta medicinal por civilizações ao redor do mundo. Registros milenares da China, da Índia e do Egito Antigo descrevem seu uso no alívio da dor, no tratamento de inflamações e em rituais de cura. Na farmacopeia tradicional indiana, o uso da cannabis era considerado parte essencial do cuidado com o corpo e a mente, integrada a práticas que enxergavam a saúde como equilíbrio entre o ser e a natureza.</p>
@@ -314,50 +377,62 @@
       </div>
     </section>
 
-    <!-- ========== TRUST / LEGALITY ========== -->
+    <!-- ========== TRUST / SIGILUM ========== -->
     <section class="section section--sm trust">
       <div class="container">
         <div class="trust__grid">
+          <!-- I — Atuação Legal — open scroll -->
           <div class="trust__item reveal">
             <div class="trust__icon">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
-                <path d="M9 12l2 2 4-4"/>
+              <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 6c0-1 1-2 2-2h16c1 0 2 1 2 2v20c0 1-1 2-2 2H8c-1 0-2-1-2-2V6z"/>
+                <path d="M10 9h12M10 13h12M10 17h8"/>
+                <path d="M22 22l-3 3-2-2"/>
               </svg>
             </div>
             <h3 class="trust__label">Atuação Legal</h3>
             <p class="trust__text">Respeitamos toda legislação vigente</p>
           </div>
 
+          <!-- II — Dados Protegidos — wax seal -->
           <div class="trust__item reveal">
             <div class="trust__icon">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                <circle cx="12" cy="16" r="1.5"/>
-                <path d="M12 17.5V20"/>
+              <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="16" cy="14" r="8"/>
+                <path d="M11 14a5 5 0 0 1 10 0"/>
+                <path d="M16 9v5l3 2"/>
+                <path d="M12 22l-2 7 6-3 6 3-2-7"/>
               </svg>
             </div>
             <h3 class="trust__label">Dados Protegidos</h3>
-            <p class="trust__text">Conformidade com LGPD</p>
+            <p class="trust__text">Em conformidade com a LGPD</p>
           </div>
 
+          <!-- III — Médicos Certificados — caduceus echo -->
           <div class="trust__item reveal">
             <div class="trust__icon">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2v6M12 16v6M9 8h6M9 16h6"/>
-                <circle cx="12" cy="12" r="10"/>
+              <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 4v24"/>
+                <path d="M16 4l-3-3M16 4l3-3"/>
+                <path d="M11 10c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5z" opacity="0.65"/>
+                <path d="M16 16c-3 2-5 5-5 8M16 16c3 2 5 5 5 8"/>
+                <path d="M11 28h10"/>
               </svg>
             </div>
             <h3 class="trust__label">Médicos Certificados</h3>
             <p class="trust__text">Parceiros prescritores habilitados</p>
           </div>
 
+          <!-- IV — Sem Fins Lucrativos — open hands -->
           <div class="trust__item reveal">
             <div class="trust__icon">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 21c-4-3-10-7-10-12a6 6 0 0 1 6-6c2 0 3.5 1 4 2.5C12.5 4 14 3 16 3a6 6 0 0 1 6 6c0 5-6 9-10 12z"/>
-                <path d="M8 13c0-1 1-2 2-2h4c1 0 2 1 2 2v0c0 1-1 2-2 2h-4c-1 0-2-1-2-2z"/>
+              <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 22c0-3 2-5 4-5h12c2 0 4 2 4 5"/>
+                <path d="M10 17V8c0-1 1-2 2-2s2 1 2 2v6"/>
+                <path d="M14 14V6c0-1 1-2 2-2s2 1 2 2v8"/>
+                <path d="M18 14V8c0-1 1-2 2-2s2 1 2 2v9"/>
+                <path d="M16 17l-3-2M16 17l3-2"/>
+                <circle cx="16" cy="13" r="0.8" fill="currentColor"/>
               </svg>
             </div>
             <h3 class="trust__label">Sem Fins Lucrativos</h3>
@@ -367,7 +442,7 @@
       </div>
     </section>
 
-    <!-- ========== CTA FINAL ========== -->
+    <!-- ========== CTA FINAL — TOMUS CONCLUSIO ========== -->
     <section class="section cta-final">
       <div class="cta-final__watermark" aria-hidden="true">
         <img src="img/marca-dagua-branca.png" alt="" loading="lazy">
@@ -383,7 +458,7 @@
 
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========== FOOTER — CÓLOFON ========== -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__grid">
@@ -393,12 +468,12 @@
             <span>Diamba Sagrada</span>
           </a>
           <p class="footer__desc">
-            Associação de pacientes dedicada ao acesso seguro, legal e humanizado à cannabis medicinal no Brasil.
+            Associação de pacientes dedicada ao acesso seguro, legal e humanizado à cannabis medicinal no Brasil — uma obra coletiva de cuidado, escrita a muitas mãos.
           </p>
         </div>
 
         <div class="footer__nav">
-          <h4 class="footer__heading">Navegação</h4>
+          <h4 class="footer__heading">Sumário</h4>
           <ul class="footer__list">
             <li><a href="index.html" class="footer__link">Início</a></li>
             <li><a href="quem-somos.html" class="footer__link">Quem Somos</a></li>
@@ -408,11 +483,11 @@
         </div>
 
         <div class="footer__contact">
-          <h4 class="footer__heading">Contato</h4>
+          <h4 class="footer__heading">Correspondência</h4>
           <ul class="footer__list">
             <li>
               <a href="mailto:contato@diambasagrada.org.br" class="footer__link">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 0.5rem;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 0.5rem;">
                   <rect x="2" y="4" width="20" height="16" rx="2"/>
                   <path d="M22 4L12 13 2 4"/>
                 </svg>
@@ -421,7 +496,7 @@
             </li>
             <li>
               <a href="https://www.instagram.com/diambasagrada" target="_blank" rel="noopener noreferrer" class="footer__link" aria-label="Instagram da Diamba Sagrada">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 0.5rem;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 0.5rem;">
                   <rect x="2" y="2" width="20" height="20" rx="5"/>
                   <circle cx="12" cy="12" r="5"/>
                   <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
@@ -434,8 +509,8 @@
       </div>
 
       <div class="footer__bottom">
-        <p>&copy; 2024 Diamba Sagrada. Todos os direitos reservados.</p>
-        <p>Associação sem fins lucrativos</p>
+        <p>Edição Primeira &middot; Anno Domini MMXXIV &middot; Diamba Sagrada</p>
+        <p>Associação sem fins lucrativos &middot; Todos os direitos reservados</p>
       </div>
     </div>
   </footer>

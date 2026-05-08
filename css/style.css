@@ -4033,3 +4033,1036 @@ textarea.form-input {
     animation: none;
   }
 }
+
+/* ==========================================================================
+   ╔═══════════════════════════════════════════════════════════════════════╗
+   ║  CODEX DIAMBA — Manuscript Layer                                      ║
+   ║  A sacred-botanical editorial transformation. Layered on top of       ║
+   ║  the base system — overrides for paper texture, ink typography,       ║
+   ║  illuminated capitals, ornamental rules, marginalia, and ceremonial   ║
+   ║  motion. Class names preserved so existing JS continues to function.  ║
+   ╚═══════════════════════════════════════════════════════════════════════╝
+   ========================================================================== */
+
+/* --- M0. Tokens --------------------------------------------------------- */
+:root {
+  /* Paper & ink palette — warmer, aged, hand-printed */
+  --paper:        #F1E8D3;
+  --paper-deep:   #E8DCBE;
+  --paper-shade:  #D9C9A2;
+  --paper-edge:   #C7B383;
+  --ink:          #1B2A21;
+  --ink-soft:     #4D5C53;
+  --ink-faded:    rgba(27, 42, 33, 0.55);
+  --sepia:        #8A6A45;
+  --vermilion:    #A6432B;     /* used SPARINGLY — single-letter ornaments */
+  --gold-leaf:    #B7902F;
+  --gold-deep:    #936F1C;
+  --rule:         rgba(45, 64, 47, 0.22);
+  --rule-strong:  rgba(45, 64, 47, 0.42);
+  --forest:       #1F3A2C;
+  --forest-deep:  #14271E;
+
+  /* Paper grain — SVG turbulence as a fixed background */
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.31  0 0 0 0 0.16  0 0 0 0.085 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+
+  /* Wavy hand-drawn ink underline (used on nav, accents) */
+  --ink-stroke: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6' preserveAspectRatio='none'><path d='M2 4 Q 15 1 30 4 T 60 4 T 90 4 T 118 4' fill='none' stroke='%23B7902F' stroke-width='1.4' stroke-linecap='round'/></svg>");
+
+  /* Gold dotted rule */
+  --gold-dotted: radial-gradient(circle, var(--gold-leaf) 1px, transparent 1.5px) 0 50% / 8px 2px repeat-x;
+}
+
+/* --- M1. Base — paper + ink override ----------------------------------- */
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  background-image:
+    var(--grain),
+    radial-gradient(ellipse 80% 60% at 18% 8%, rgba(212,175,55,0.10), transparent 65%),
+    radial-gradient(ellipse 80% 60% at 88% 92%, rgba(140,98,52,0.09), transparent 65%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(241,232,211,0) 0%, rgba(216,201,162,0.18) 100%);
+  background-attachment: fixed, fixed, fixed, fixed;
+}
+
+h1, h2, h3, h4, h5, h6 { color: var(--ink); }
+.section__title       { color: var(--ink); }
+
+/* Selection — gold leaf on parchment */
+::selection { background: rgba(183, 144, 47, 0.32); color: var(--ink); }
+
+/* Subtle text-rendering polish for serifs */
+body, h1, h2, h3, p, a, span {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "onum" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- M2. Ornament & utility classes ------------------------------------ */
+.codex-eyebrow {
+  display: inline-flex; align-items: baseline; gap: 0.6rem;
+  font-family: var(--font-display);
+  font-style: italic; font-weight: 500;
+  font-size: 0.95rem; color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+.codex-eyebrow .folio {
+  font-style: normal; font-variant: small-caps;
+  letter-spacing: 0.22em; color: var(--gold-leaf);
+  font-weight: 600; font-size: 0.78em;
+}
+.codex-eyebrow .ord {
+  color: var(--vermilion); font-style: normal;
+  font-weight: 600; letter-spacing: 0.05em;
+}
+
+.smallcaps {
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+}
+
+.codex-rule {
+  display: flex; align-items: center; gap: 1.2rem;
+  color: var(--gold-leaf);
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1rem; line-height: 1;
+  margin-block: 1.5rem;
+}
+.codex-rule::before, .codex-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--rule-strong) 50%, transparent 100%);
+}
+.codex-rule__glyph { font-size: 1.2rem; opacity: 0.9; }
+
+.codex-asterism {
+  display: block; text-align: center;
+  font-family: var(--font-display);
+  color: var(--gold-leaf);
+  font-size: 1.1rem; line-height: 1;
+  letter-spacing: 0.4em; margin: 1.5rem 0;
+  user-select: none;
+}
+
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 5em;
+  line-height: 0.82;
+  float: left;
+  padding: 0.04em 0.14em 0 0;
+  color: var(--gold-leaf);
+  text-shadow: 1px 1px 0 rgba(147, 111, 28, 0.18);
+}
+
+.marginalia {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  letter-spacing: 0.005em;
+  border-left: 1px solid var(--gold-leaf);
+  padding-left: 1rem;
+}
+
+/* Pull-quote treatment */
+.codex-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.4;
+  color: var(--ink);
+  position: relative;
+  padding: 1.5rem 0 1.5rem 2.4rem;
+  margin: 2.5rem 0;
+  border-left: 2px solid var(--gold-leaf);
+}
+.codex-quote::before {
+  content: '“';
+  position: absolute; left: -0.05em; top: -0.6rem;
+  font-size: 4.5rem; line-height: 1; color: var(--gold-leaf);
+  font-family: var(--font-display); font-style: normal;
+  opacity: 0.85;
+}
+.codex-quote cite {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 0.78em;
+  color: var(--ink-soft);
+}
+.codex-quote cite::before { content: '— '; color: var(--gold-leaf); }
+
+/* --- M3. Buttons & links — manuscript ink treatment -------------------- */
+.btn {
+  border-radius: 2px;     /* tighter, letterpress-like */
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  padding: 0.95rem 1.8rem;
+  text-transform: none;
+  border: 1px solid transparent;
+}
+.btn--primary {
+  background: var(--forest);
+  color: var(--paper);
+  border-color: var(--forest-deep);
+  box-shadow:
+    inset 0 0 0 1px rgba(183, 144, 47, 0.25),
+    0 1px 0 var(--paper-shade);
+}
+.btn--primary:hover {
+  background: var(--forest-deep);
+  color: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px rgba(183, 144, 47, 0.55),
+    0 2px 0 var(--paper-shade);
+}
+.btn--gold {
+  background: var(--gold-leaf);
+  color: var(--forest-deep);
+  border-color: var(--gold-deep);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 244, 200, 0.35),
+    0 1px 0 var(--paper-shade);
+}
+.btn--gold:hover {
+  background: var(--gold-deep);
+  color: var(--paper);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 244, 200, 0.5),
+    0 2px 0 var(--paper-shade);
+}
+.btn--secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn--secondary:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+/* "Read more" inline link — replaces twin-CTA cliché */
+.inline-link {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 4px;
+  background-image: var(--ink-stroke);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 6px;
+  transition: color 280ms var(--ease-out), letter-spacing 280ms var(--ease-out);
+}
+.inline-link:hover {
+  color: var(--gold-leaf);
+  letter-spacing: 0.015em;
+}
+.inline-link::after {
+  content: ' ↘';
+  font-style: normal;
+  font-size: 0.8em;
+  color: var(--gold-leaf);
+  margin-left: 0.25em;
+}
+
+/* --- M4. NAV — Sumário (Table of Contents) ----------------------------- */
+.nav { background: transparent; }
+.nav--scrolled {
+  background-color: rgba(241, 232, 211, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  box-shadow: 0 1px 0 var(--rule), 0 8px 24px rgba(20, 39, 30, 0.05);
+}
+
+.nav__inner { gap: 1.5rem; }
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.25rem;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  align-items: center;
+  gap: 0.85rem;
+}
+.nav__logo img {
+  border-radius: 50%;
+  border: 1px solid var(--gold-leaf);
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px rgba(183, 144, 47, 0.25);
+}
+.nav__logo:hover { color: var(--gold-leaf); }
+
+.nav__links {
+  counter-reset: sumario;
+  position: relative;
+  gap: 1.5rem;
+}
+.nav__links::before {
+  content: 'Sumário';
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-right: 0.5rem;
+  padding-right: 1.1rem;
+  border-right: 1px solid var(--rule-strong);
+  letter-spacing: 0.01em;
+}
+
+.nav__link {
+  counter-increment: sumario;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.02rem;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+  padding: 0.3rem 0;
+  position: relative;
+}
+.nav__link::before {
+  content: counter(sumario, upper-roman) '.';
+  display: inline-block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.7em;
+  vertical-align: 0.2em;
+  color: var(--gold-leaf);
+  margin-right: 0.45rem;
+  letter-spacing: 0.06em;
+}
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 6px;
+  background: var(--ink-stroke) 0 0 / 100% 6px no-repeat;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms var(--ease-out);
+  width: auto;
+}
+.nav__link:hover { color: var(--gold-leaf); }
+.nav__link:hover::after,
+.nav__link--active::after { transform: scaleX(1); }
+.nav__link--active { color: var(--gold-deep); }
+
+.nav__cta {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.4rem;
+}
+
+/* Mobile menu — paper backdrop */
+.nav__mobile { background-color: var(--paper); }
+.nav__mobile a {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink);
+}
+.nav__toggle span { background-color: var(--ink); }
+
+/* --- M5. HERO — Folio I ------------------------------------------------ */
+.hero {
+  background: transparent;
+  min-height: auto;
+  padding-block: clamp(7rem, 10vw, 10rem) clamp(4rem, 7vw, 7rem);
+  text-align: left;
+  align-items: stretch;
+  position: relative;
+}
+
+.hero__bg { display: none; }     /* paper texture replaces gradient bg */
+
+.hero__content {
+  text-align: left;
+  max-width: 1180px;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 5vw, 5rem);
+  row-gap: 2rem;
+  align-items: end;
+}
+@media (max-width: 900px) {
+  .hero__content { grid-template-columns: 1fr; }
+}
+
+/* Hide the SaaS pill badge — replaced by a folio header */
+.hero__badge { display: none; }
+
+/* Editorial folio line */
+.hero__folio {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 1rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.hero__folio .mark {
+  font-variant: small-caps;
+  letter-spacing: 0.28em;
+  color: var(--gold-leaf);
+  font-weight: 600; font-size: 0.78em;
+  font-style: normal;
+}
+.hero__folio .sep {
+  width: 8px; height: 8px;
+  display: inline-block;
+  border: 1px solid var(--gold-leaf);
+  transform: rotate(45deg);
+  margin-inline: 0.25rem;
+}
+.hero__folio .anno {
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  color: var(--sepia);
+  font-style: normal;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8.4vw, 6.6rem);
+  line-height: 0.96;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+.hero__title .accent {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold-leaf);
+  position: relative;
+  padding: 0 0.06em;
+  background-image: linear-gradient(transparent 78%, rgba(183, 144, 47, 0.32) 78%, rgba(183, 144, 47, 0.32) 92%, transparent 92%);
+}
+
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 36ch;
+  margin: 0 0 2rem 0;
+}
+.hero__subtitle::first-letter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 3em;
+  line-height: 0.85;
+  float: left;
+  padding: 0.06em 0.14em 0 0;
+  color: var(--gold-leaf);
+}
+
+.hero .btn-group {
+  justify-content: flex-start !important;
+  align-items: center;
+  gap: 1.5rem !important;
+}
+.hero__disclaimer { display: none; }   /* moved into the marginalia column */
+
+/* Right-column: marginalia + decorative cannabis silhouette */
+.hero__margin {
+  position: relative;
+  align-self: end;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 1.5rem;
+  min-height: 280px;
+  justify-content: flex-end;
+}
+.hero__margin .marginalia { border-left: none; padding-left: 0; }
+.hero__margin .marginalia strong {
+  display: block;
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.2em;
+  font-size: 0.78em;
+  color: var(--gold-leaf);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+.hero__margin-art {
+  position: absolute;
+  right: -1rem; top: -2rem;
+  width: 120px; height: 180px;
+  color: var(--forest);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* Decorative leaves — push them deeper into atmosphere */
+.hero__decor { opacity: 0.045; color: var(--forest); }
+.hero__decor--left { top: 6%; left: -4%; transform: rotate(-12deg); }
+.hero__decor--right { bottom: 8%; right: -2%; transform: rotate(18deg); }
+
+/* --- M6. PILLARS as Illuminated Verses --------------------------------- */
+.pillars { background: transparent; }
+.pillars .container { max-width: 1180px; }
+
+.pillars .section__header {
+  text-align: left;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 5rem;
+}
+.pillars .section__overline {
+  grid-column: 1;
+  font-variant: small-caps;
+  letter-spacing: 0.28em;
+  font-size: 0.82rem;
+  color: var(--gold-leaf);
+  margin-bottom: 0;
+  align-self: end;
+  white-space: nowrap;
+}
+.pillars .section__title {
+  grid-column: 2;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1.05;
+  margin-bottom: 0;
+}
+.pillars .section__header::after {
+  content: '';
+  grid-column: 1 / -1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-leaf) 0%, var(--rule-strong) 30%, transparent 100%);
+  margin-top: 1.25rem;
+}
+
+/* Override .grid--3 for pillars — staggered editorial layout */
+.pillars .grid--3 {
+  grid-template-columns: 1fr;
+  gap: 4.5rem;
+}
+@media (min-width: 900px) {
+  .pillars .grid--3 {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 4rem;
+  }
+  .pillars .grid--3 > .card:nth-child(1) { grid-column: 1 / span 6; }
+  .pillars .grid--3 > .card:nth-child(2) { grid-column: 5 / span 6; transform: translateY(2.5rem); }
+  .pillars .grid--3 > .card:nth-child(3) { grid-column: 8 / span 5; }
+}
+
+/* Pillar card — drop the white-card cliché entirely */
+.pillars .card {
+  counter-increment: pillar-num;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  position: relative;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--rule-strong);
+  transition: none;
+}
+.pillars .card:hover { transform: none; box-shadow: none; }
+.pillars { counter-reset: pillar-num; }
+
+.pillars .card::before {
+  content: counter(pillar-num, upper-roman);
+  position: absolute;
+  top: -0.7rem; left: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--gold-leaf);
+  background: var(--paper);
+  padding-right: 0.6rem;
+}
+
+.pillars .card__icon {
+  width: 56px; height: 56px;
+  margin-bottom: 1.5rem;
+  color: var(--forest);
+  opacity: 0.85;
+  transition: transform 600ms var(--ease-out), opacity 280ms var(--ease-out);
+}
+.pillars .card:hover .card__icon {
+  transform: rotate(-4deg) translateY(-2px);
+  opacity: 1;
+}
+
+.pillars .card__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.005em;
+}
+
+.pillars .card__text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 38ch;
+}
+
+/* --- M7. VISION — Sacred diagram refinement ---------------------------- */
+.vision {
+  background: transparent;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(5rem, 9vw, 8rem);
+}
+.vision .section__overline {
+  font-variant: small-caps;
+  letter-spacing: 0.28em;
+  color: var(--gold-leaf);
+  font-size: 0.82rem;
+}
+.vision__text h2 {
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  line-height: 1.1;
+}
+.vision__text p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+.vision__text p:first-of-type { text-indent: 1.5em; }
+
+.triad__item {
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.6rem 1rem;
+  position: relative;
+}
+.triad__item:hover {
+  background: rgba(183, 144, 47, 0.06);
+  box-shadow: none;
+  transform: none;
+}
+.triad__item::before, .triad__item::after {
+  content: '';
+  position: absolute;
+  width: 6px; height: 6px;
+  background: var(--gold-leaf);
+  transform: rotate(45deg);
+}
+.triad__item::before { top: -3.5px; left: -3.5px; }
+.triad__item::after  { bottom: -3.5px; right: -3.5px; }
+.triad__icon { color: var(--gold-leaf); }
+.triad__label {
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.triad__lines { color: var(--gold-leaf); opacity: 0.4 !important; }
+
+/* --- M8. JOURNEY — Itinerarium ----------------------------------------- */
+.journey {
+  background: transparent;
+  position: relative;
+}
+.journey::before, .journey::after {
+  content: '';
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: clamp(80%, 80vw, 1140px); height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule-strong), transparent);
+}
+.journey::before { top: 0; }
+.journey::after  { bottom: 0; }
+
+.journey .section__header { text-align: center; }
+.journey .section__overline {
+  font-variant: small-caps;
+  letter-spacing: 0.28em;
+  color: var(--gold-leaf);
+}
+.journey .section__title {
+  font-style: italic;
+  font-weight: 500;
+}
+.journey .section__title::before, .journey .section__title::after {
+  content: '\2042'; /* asterism */
+  display: inline-block; margin: 0 0.6em;
+  color: var(--gold-leaf); font-size: 0.7em;
+  vertical-align: 0.25em; opacity: 0.8;
+}
+
+.timeline { padding-left: 1.5rem; }
+.timeline::before {
+  background: var(--gold-dotted);
+  height: 2px; background-color: transparent;
+  width: 2px; background: linear-gradient(180deg, transparent, var(--gold-leaf) 8%, var(--gold-leaf) 92%, transparent);
+  opacity: 0.6;
+}
+.timeline__dot {
+  background: var(--paper);
+  border: 1.5px solid var(--gold-leaf);
+  width: 14px; height: 14px;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+.timeline__dot::after {
+  content: '';
+  position: absolute; inset: 3px;
+  background: var(--gold-leaf);
+  border-radius: 50%;
+}
+.timeline__number {
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  color: var(--gold-leaf);
+  font-size: 0.74rem;
+}
+.timeline__title {
+  font-style: italic;
+  font-weight: 500;
+}
+.timeline__text { color: var(--ink-soft); }
+
+@media (min-width: 768px) {
+  .timeline::before {
+    background: linear-gradient(90deg, transparent, var(--gold-leaf) 6%, var(--gold-leaf) 94%, transparent);
+    height: 1px; width: auto; opacity: 0.55;
+  }
+  .timeline__step {
+    position: relative;
+  }
+  .timeline__step:not(:last-child)::after {
+    content: '\276F';
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    color: var(--gold-leaf);
+    font-size: 0.85rem;
+    opacity: 0.55;
+  }
+}
+
+/* --- M9. ANCESTRAL — push the existing dropcap further ----------------- */
+.ancestral {
+  background: linear-gradient(180deg, transparent 0%, rgba(216, 201, 162, 0.18) 50%, transparent 100%);
+  position: relative;
+  padding-block: clamp(6rem, 10vw, 9rem);
+}
+.ancestral .container { max-width: 880px; }
+.ancestral__decor {
+  width: 460px; height: 720px;
+  right: -160px; opacity: 0.07;
+  color: var(--forest);
+}
+.ancestral__overline,
+.ancestral .section__overline {
+  font-variant: small-caps;
+  letter-spacing: 0.28em;
+  color: var(--gold-leaf);
+}
+.ancestral__content h2,
+.ancestral .section__title {
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.1rem, 4.2vw, 3rem);
+  line-height: 1.08;
+  margin-bottom: 2.5rem;
+}
+.ancestral__text p {
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  text-align: justify;
+  hyphens: auto;
+}
+.ancestral__text p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 5.2em;
+  line-height: 0.82;
+  float: left;
+  padding: 0.05em 0.15em 0 0;
+  color: var(--gold-leaf);
+  text-shadow: 1px 1px 0 rgba(147, 111, 28, 0.18);
+}
+
+/* --- M10. TRUST — Sigilum row ----------------------------------------- */
+.trust {
+  background: transparent;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}
+.trust__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+@media (min-width: 700px) {
+  .trust__grid { grid-template-columns: repeat(4, 1fr); }
+  .trust__item:not(:last-child) {
+    border-right: 1px solid var(--rule);
+  }
+}
+.trust__item { padding: 0.5rem 1rem; }
+.trust__icon { color: var(--gold-leaf); }
+.trust__label {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+.trust__text {
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+/* --- M11. CTA FINAL — Tomus Conclusio ---------------------------------- */
+.cta-final {
+  background: var(--forest-deep);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(6rem, 10vw, 9rem);
+  border-block: 1px solid var(--gold-deep);
+}
+.cta-final::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: var(--grain),
+    radial-gradient(ellipse at 50% 0%, rgba(183, 144, 47, 0.18), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(183, 144, 47, 0.10), transparent 55%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.cta-final::after {
+  content: '\2042';
+  position: absolute; left: 50%; top: 2rem; transform: translateX(-50%);
+  color: var(--gold-leaf); font-size: 1.4rem;
+  letter-spacing: 0.5em;
+  opacity: 0.7;
+}
+.cta-final__watermark { width: 460px; height: 460px; opacity: 0.085; }
+@media (max-width: 768px) {
+  .cta-final__watermark { width: 280px; height: 280px; opacity: 0.06; }
+}
+.cta-final__content { position: relative; z-index: 2; }
+.cta-final h2 {
+  color: var(--paper);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+  line-height: 1.1;
+  max-width: 22ch;
+  margin-inline: auto;
+}
+.cta-final p {
+  color: rgba(241, 232, 211, 0.78);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.cta-final .btn--gold {
+  border: 1px solid var(--gold-leaf);
+  background: transparent;
+  color: var(--gold-leaf);
+  padding: 1.05rem 2.4rem;
+  letter-spacing: 0.04em;
+}
+.cta-final .btn--gold:hover {
+  background: var(--gold-leaf);
+  color: var(--forest-deep);
+}
+
+/* --- M12. FOOTER — Cólofon -------------------------------------------- */
+.footer {
+  background: var(--forest-deep);
+  color: rgba(241, 232, 211, 0.72);
+  padding-block: 4rem 1.5rem;
+  position: relative;
+  border-top: 1px solid var(--gold-deep);
+}
+.footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: var(--grain);
+  opacity: 0.5; pointer-events: none;
+}
+.footer > .container { position: relative; }
+
+/* Cólofon header strip — added via CSS ::before on the grid */
+.footer__grid { position: relative; padding-top: 2rem; }
+.footer__grid::before {
+  content: 'Cólofon \2014 Diamba Sagrada';
+  position: absolute; top: -0.5rem; left: 0; right: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.32em;
+  font-size: 0.78rem;
+  color: var(--gold-leaf);
+  text-align: center;
+  padding-bottom: 2.5rem;
+}
+.footer__grid::after {
+  content: '\2042';
+  position: absolute; top: 0.6rem; left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-leaf);
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  opacity: 0.7;
+  padding-top: 0.5rem;
+}
+
+.footer__logo {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--paper);
+}
+.footer__logo img {
+  border-radius: 50%;
+  border: 1px solid var(--gold-leaf);
+  box-shadow: 0 0 0 3px var(--forest-deep), 0 0 0 4px rgba(183, 144, 47, 0.4);
+}
+.footer__desc {
+  font-family: var(--font-body);
+  line-height: 1.75;
+  font-size: 0.92rem;
+}
+.footer__heading {
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.22em;
+  font-size: 0.85rem;
+  color: var(--gold-leaf);
+  margin-bottom: 1.25rem;
+}
+.footer__list a {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: rgba(241, 232, 211, 0.72);
+  letter-spacing: 0.005em;
+}
+.footer__list a:hover {
+  color: var(--gold-leaf);
+  letter-spacing: 0.015em;
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(183, 144, 47, 0.28);
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: rgba(241, 232, 211, 0.55);
+  letter-spacing: 0.02em;
+}
+.footer__bottom p:first-child::before {
+  content: '\2767  ';
+  color: var(--gold-leaf);
+  margin-right: 0.4em;
+  opacity: 0.85;
+}
+
+/* --- M13. Page-enter & reveal — gentler, manuscript breathing ---------- */
+.page-enter { transform: translateY(14px); }
+.page-enter--visible { transform: translateY(0); }
+.reveal { transform: translateY(20px); }
+.reveal--visible { transform: translateY(0); }
+
+/* Slight cross-fade duration extension for ceremonial feel */
+.page-enter, .reveal {
+  transition-duration: 1100ms !important;
+  transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+
+/* Lift the journey title with extra grace */
+.section__title { transition: letter-spacing 600ms var(--ease-out); }
+
+/* --- M14. Internal-page hero parchment treatment ----------------------- */
+.hero--internal {
+  border-bottom: 1px solid var(--rule);
+  padding-block: calc(var(--nav-height) + 4rem) 4rem;
+}
+.hero--internal .hero__title { font-style: italic; font-weight: 500; }
+.hero--internal .hero__subtitle::first-letter { all: unset; }
+.breadcrumb {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.breadcrumb a { color: var(--ink-soft); }
+.breadcrumb a:hover { color: var(--gold-leaf); }
+.breadcrumb__sep { color: var(--gold-leaf); opacity: 0.7; }
+
+/* --- M15. Generic card refinements (other pages) ----------------------- */
+.mvv-card, .service-card {
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  background: rgba(241, 232, 211, 0.55);
+  box-shadow: none;
+}
+.mvv-card:hover, .service-card:hover {
+  box-shadow: none;
+  transform: translateY(-2px);
+  border-color: var(--gold-leaf);
+  background: rgba(241, 232, 211, 0.85);
+}
+.mvv-card__title, .service-card__title { font-style: italic; font-weight: 500; }
+.mvv-card__icon, .service-card__icon { color: var(--gold-leaf); }
+.service-card__badge {
+  background: transparent;
+  border: 1px solid var(--gold-leaf);
+  color: var(--gold-leaf);
+  border-radius: 0;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+}
+
+.transparency {
+  background: rgba(216, 201, 162, 0.32);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+}
+
+/* --- M16. Reduced-motion respect already in base; honor it ------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__title .accent { background-image: none; }
+  .pillars .grid--3 > .card:nth-child(2) { transform: none; }
+}
+
