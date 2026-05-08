@@ -53,42 +53,19 @@
 
   <main>
 
-    <!-- ========== HERO — FOLIO I ========== -->
-    <section class="hero">
-      <div class="hero__bg"></div>
+    <!-- ========== HERO CINEMATOGRÁFICO — FOLIO I ========== -->
+    <section class="hero hero--cinematic">
+      <!-- Background video plate -->
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+        <source src="video/hero.mp4" type="video/mp4">
+      </video>
 
-      <!-- Decorative leaves -->
-      <div class="hero__decor hero__decor--left" aria-hidden="true">
-        <svg viewBox="0 0 200 300" width="200" height="300" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M100 290V100"/>
-          <path d="M100 100c-15-30-50-55-85-55 5 35 35 65 85 70"/>
-          <path d="M100 100c15-30 50-55 85-55-5 35-35 65-85 70"/>
-          <path d="M100 160c-20-15-55-18-78-5 10 22 40 30 78 18"/>
-          <path d="M100 160c20-15 55-18 78-5-10 22-40 30-78 18"/>
-          <path d="M100 60c-8-25-30-48-55-55 2 30 18 52 55 65"/>
-          <path d="M100 60c8-25 30-48 55-55-2 30-18 52-55 65"/>
-          <path d="M100 40c-5-15-18-30-35-38 1 20 12 35 35 43"/>
-          <path d="M100 40c5-15 18-30 35-38-1 20-12 35-35 43"/>
-        </svg>
-      </div>
+      <!-- Cinematic overlays: vignette + bottom gradient anchor -->
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
 
-      <div class="hero__decor hero__decor--right" aria-hidden="true">
-        <svg viewBox="0 0 200 300" width="200" height="300" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M100 290V100"/>
-          <path d="M100 100c-15-30-50-55-85-55 5 35 35 65 85 70"/>
-          <path d="M100 100c15-30 50-55 85-55-5 35-35 65-85 70"/>
-          <path d="M100 160c-20-15-55-18-78-5 10 22 40 30 78 18"/>
-          <path d="M100 160c20-15 55-18 78-5-10 22-40 30-78 18"/>
-          <path d="M100 60c-8-25-30-48-55-55 2 30 18 52 55 65"/>
-          <path d="M100 60c8-25 30-48 55-55-2 30-18 52-55 65"/>
-          <path d="M100 40c-5-15-18-30-35-38 1 20 12 35 35 43"/>
-          <path d="M100 40c5-15 18-30 35-38-1 20-12 35-35 43"/>
-        </svg>
-      </div>
-
-      <div class="container hero__content">
-
-        <!-- Editorial folio strip -->
+      <!-- Top strip: folio + status pill -->
+      <div class="hero__top">
         <div class="hero__folio page-enter" aria-hidden="true">
           <span class="mark">Fólio I</span>
           <span class="sep" role="presentation"></span>
@@ -97,44 +74,23 @@
           <span class="anno">Anno MMXXIV</span>
         </div>
 
-        <div>
-          <h1 class="hero__title page-enter">
-            Cultivar é direito.<br>
-            Tratar é <span class="accent">dignidade</span>.
-          </h1>
+        <span class="hero__status page-enter">
+          <span class="hero__status-dot" aria-hidden="true"></span>
+          <span class="hero__status-label">Em construção</span>
+        </span>
+      </div>
 
-          <p class="hero__subtitle page-enter">
-            A Diamba Sagrada é uma associação de pacientes que acredita que o cuidado com a saúde é um direito de todos — feito de escuta, de ciência e de memória ancestral.
-          </p>
+      <!-- Bottom type: minimalist poster framing -->
+      <div class="hero__bottom">
+        <h1 class="hero__title page-enter">
+          Cultivar é direito.<br>
+          Tratar é <span class="accent">dignidade</span>.
+        </h1>
 
-          <div class="btn-group page-enter">
-            <a href="seja-associado.html" class="btn btn--primary btn--lg">Quero me associar</a>
-            <a href="#jornada" class="inline-link">Como funciona a jornada</a>
-          </div>
+        <div class="btn-group page-enter">
+          <a href="seja-associado.html" class="btn btn--gold btn--lg">Quero me associar</a>
+          <a href="#jornada" class="hero__inline-link">Como funciona <span aria-hidden="true">↘</span></a>
         </div>
-
-        <!-- Marginalia column — replaces the centered disclaimer cliché -->
-        <aside class="hero__margin page-enter" aria-label="Notas de margem">
-          <div class="hero__margin-art" aria-hidden="true">
-            <svg viewBox="0 0 200 300" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M100 290V100"/>
-              <path d="M100 100c-15-30-50-55-85-55 5 35 35 65 85 70"/>
-              <path d="M100 100c15-30 50-55 85-55-5 35-35 65-85 70"/>
-              <path d="M100 160c-20-15-55-18-78-5 10 22 40 30 78 18"/>
-              <path d="M100 160c20-15 55-18 78-5-10 22-40 30-78 18"/>
-              <path d="M100 220c-15-12-42-15-62-5 8 20 35 30 62 18"/>
-              <path d="M100 220c15-12 42-15 62-5-8 20-35 30-62 18"/>
-            </svg>
-          </div>
-          <p class="marginalia">
-            <strong>Nota de Margem</strong>
-            Esta associação encontra-se em fase de construção. Não fornecemos óleo neste momento — caminhamos com cuidado, no tempo certo.
-          </p>
-          <p class="marginalia">
-            <strong>Manifesto</strong>
-            <em>“Que o saber das ervas, a escuta dos médicos e o amparo do direito caminhem juntos — pois a cura é trabalho coletivo.”</em>
-          </p>
-        </aside>
       </div>
     </section>
 
