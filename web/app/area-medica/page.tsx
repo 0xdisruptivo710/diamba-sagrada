@@ -4,18 +4,13 @@ import { CTAFinal } from "@/components/codex/cta-final";
 import { SectionOverline } from "@/components/ornaments";
 import { Reveal } from "@/components/motion";
 import { ButtonLink } from "@/components/ui";
+import { siteConfig, whatsappUrl, associationConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Área Médica",
   description:
     "Conecte-se com médicos prescritores parceiros, conheça a jornada de atendimento e tire suas dúvidas sobre cannabis medicinal.",
 };
-
-const medicos = [
-  { nome: "Dra. Renata Almeida Costa", crm: "CRM/SP 142.837", esp: "Neurologia" },
-  { nome: "Dr. Marcos Vinícius Ferreira", crm: "CRM/RJ 198.254", esp: "Dor Crônica" },
-  { nome: "Dra. Camila Nascimento Souza", crm: "CRM/MG 176.491", esp: "Psiquiatria" },
-];
 
 const passos = [
   {
@@ -77,46 +72,98 @@ export default function AreaMedicaPage() {
         subtitle="Conecte-se com médicos prescritores parceiros e conheça nossa jornada de atendimento humanizado."
       />
 
-      {/* Médicos */}
+      {/* Conexão com médico + voucher */}
       <section className="py-[clamp(5rem,9vw,8rem)]">
         <div className="mx-auto max-w-[1180px] px-6 md:px-12">
           <Reveal className="mb-12">
-            <SectionOverline>Articulus Primus — Rede de Confiança</SectionOverline>
-            <h2 className="mt-3 font-display italic font-medium text-ink text-[clamp(2rem,3.8vw,2.85rem)] leading-tight">
-              Médicos prescritores parceiros
+            <SectionOverline>Articulus Primus — Conexão com médico</SectionOverline>
+            <h2 className="mt-3 font-display italic font-medium text-ink text-[clamp(2rem,3.8vw,2.85rem)] leading-tight max-w-[20ch]">
+              Conecte-se com um médico prescritor
             </h2>
           </Reveal>
 
-          <ul className="grid gap-8 md:grid-cols-3">
-            {medicos.map((m, i) => (
-              <Reveal as="li" key={m.crm} delay={i * 110}>
-                <article className="border border-[var(--rule-strong)] bg-[rgba(241,232,211,0.55)] p-7 hover:border-gold-leaf transition-colors">
-                  <div
-                    aria-hidden
-                    className="mb-5 size-20 rounded-full border border-gold-leaf flex items-center justify-center bg-forest text-paper"
-                  >
-                    <svg viewBox="0 0 32 32" width={28} height={28} fill="none" stroke="currentColor" strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="16" cy="11" r="5" />
-                      <path d="M6 26c0-4 4-8 10-8s10 4 10 8" />
-                    </svg>
-                  </div>
-                  <h3 className="font-display italic font-medium text-ink text-[1.25rem] mb-1">
-                    {m.nome}
-                  </h3>
-                  <p className="font-body text-ink-soft text-[0.85rem] mb-1">{m.crm}</p>
-                  <p
-                    className="font-display italic text-gold-leaf text-[0.78rem] tracking-[0.2em] mb-5"
-                    style={{ fontVariant: "small-caps" }}
-                  >
-                    {m.esp}
-                  </p>
-                  <ButtonLink href="/contato" variant="primary" size="md">
-                    Agendar consulta
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Caminho 1 — voucher */}
+            <Reveal>
+              <article className="h-full border border-[var(--rule-strong)] bg-[rgba(241,232,211,0.55)] p-8 hover:border-gold-leaf transition-colors flex flex-col">
+                <span
+                  className="font-display italic text-gold-leaf text-[0.78rem] tracking-[0.2em] mb-2"
+                  style={{ fontVariant: "small-caps" }}
+                >
+                  Associado
+                </span>
+                <h3 className="font-display italic font-medium text-ink text-[1.5rem] leading-tight mb-3">
+                  Voucher de {associationConfig.voucher.percent}% na primeira consulta
+                </h3>
+                <p className="font-body text-ink-soft text-[0.96rem] leading-[1.75] mb-6">
+                  Ao se associar, você recebe um voucher de desconto para a primeira
+                  consulta com médico parceiro e pode anexar sua receita e laudo.
+                  Pessoas com deficiência têm consulta gratuita.
+                </p>
+                <div className="mt-auto">
+                  <ButtonLink href="/seja-associado" variant="gold" size="lg">
+                    Quero meu voucher
                   </ButtonLink>
-                </article>
-              </Reveal>
-            ))}
-          </ul>
+                </div>
+              </article>
+            </Reveal>
+
+            {/* Caminho 2 — WhatsApp direto */}
+            <Reveal delay={110}>
+              <article className="h-full border border-[var(--rule-strong)] bg-[rgba(241,232,211,0.55)] p-8 hover:border-gold-leaf transition-colors flex flex-col">
+                <span
+                  className="font-display italic text-gold-leaf text-[0.78rem] tracking-[0.2em] mb-2"
+                  style={{ fontVariant: "small-caps" }}
+                >
+                  Direto
+                </span>
+                <h3 className="font-display italic font-medium text-ink text-[1.5rem] leading-tight mb-3">
+                  Prefere falar agora?
+                </h3>
+                <p className="font-body text-ink-soft text-[0.96rem] leading-[1.75] mb-6">
+                  Converse com nossa equipe de acolhimento pelo WhatsApp. Orientamos
+                  sobre o atendimento médico e os próximos passos do seu tratamento.
+                </p>
+                <div className="mt-auto">
+                  <ButtonLink
+                    href={whatsappUrl(
+                      "Olá! Gostaria de orientação para uma consulta médica de cannabis com a Diamba Sagrada.",
+                    )}
+                    variant="primary"
+                    size="lg"
+                    external
+                  >
+                    Falar no WhatsApp
+                  </ButtonLink>
+                </div>
+              </article>
+            </Reveal>
+          </div>
+
+          {/* Seja médico parceiro */}
+          <Reveal delay={80}>
+            <div className="mt-10 flex flex-col gap-4 border-t border-[var(--rule)] pt-8 md:flex-row md:items-center md:justify-between">
+              <p className="font-display italic text-ink text-[1.05rem] leading-[1.5] max-w-[46ch]">
+                <strong
+                  className="block not-italic font-semibold text-[0.78rem] tracking-[0.2em] text-gold-leaf mb-1"
+                  style={{ fontVariant: "small-caps" }}
+                >
+                  Para profissionais
+                </strong>
+                É médico e quer prescrever com a gente? Junte-se à nossa rede de parceiros.
+              </p>
+              <ButtonLink
+                href={whatsappUrl(
+                  `Olá! Sou médico(a) e tenho interesse em ser parceiro da ${siteConfig.name}.`,
+                )}
+                variant="outlined-gold"
+                size="md"
+                external
+              >
+                Seja médico parceiro
+              </ButtonLink>
+            </div>
+          </Reveal>
         </div>
       </section>
 

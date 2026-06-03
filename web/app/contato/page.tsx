@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/codex/page-hero";
 import { SectionOverline } from "@/components/ornaments";
 import { Reveal } from "@/components/motion";
-import { Button } from "@/components/ui";
+import { Button, ButtonLink } from "@/components/ui";
+import { siteConfig, whatsappUrl } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -136,7 +137,36 @@ export default function ContatoPage() {
               Outros caminhos
             </h2>
 
+            <div className="mb-7">
+              <ButtonLink
+                href={whatsappUrl("Olá! Gostaria de falar com a Diamba Sagrada.")}
+                variant="gold"
+                size="md"
+                external
+              >
+                Falar no WhatsApp
+              </ButtonLink>
+            </div>
+
             <ul className="flex flex-col gap-5 font-body text-[0.98rem] text-ink-soft">
+              {siteConfig.phoneDisplay ? (
+                <li>
+                  <span
+                    className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
+                    style={{ fontVariant: "small-caps" }}
+                  >
+                    Telefone
+                  </span>
+                  <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink hover:text-gold-leaf transition-colors"
+                  >
+                    {siteConfig.phoneDisplay}
+                  </a>
+                </li>
+              ) : null}
               <li>
                 <span
                   className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
@@ -145,10 +175,10 @@ export default function ContatoPage() {
                   Email
                 </span>
                 <a
-                  href="mailto:contato@diambasagrada.org.br"
+                  href={`mailto:${siteConfig.email}`}
                   className="text-ink hover:text-gold-leaf transition-colors"
                 >
-                  contato@diambasagrada.org.br
+                  {siteConfig.email}
                 </a>
               </li>
               <li>
@@ -159,13 +189,22 @@ export default function ContatoPage() {
                   Instagram
                 </span>
                 <a
-                  href="https://www.instagram.com/diambasagrada"
+                  href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-ink hover:text-gold-leaf transition-colors"
                 >
                   @diambasagrada
                 </a>
+              </li>
+              <li>
+                <span
+                  className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
+                  style={{ fontVariant: "small-caps" }}
+                >
+                  Onde estamos
+                </span>
+                <span>{siteConfig.address}</span>
               </li>
               <li>
                 <span

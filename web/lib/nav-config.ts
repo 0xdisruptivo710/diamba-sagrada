@@ -10,6 +10,7 @@ export const navLinks: NavLink[] = [
   { href: "/area-juridica", label: "Jurídico" },
   { href: "/blog", label: "Blog" },
   { href: "/produtos", label: "Loja" },
+  { href: "/doar", label: "Doar" },
   { href: "/contato", label: "Contato" },
 ];
 
@@ -18,4 +19,5 @@ export const footerNav: NavLink[] = [
   { href: "/quem-somos", label: "Quem Somos" },
   { href: "/o-que-fazemos", label: "O Que Fazemos" },
   { href: "/seja-associado", label: "Seja Associado" },
+  { href: "/doar", label: "Doar" },
 ];
