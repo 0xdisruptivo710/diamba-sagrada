@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Associe-se a Diamba Sagrada e tenha acesso a acolhimento, orientação médica e suporte jurídico para tratamento com cannabis medicinal.">
-  <title>Seja Associado — Diamba Sagrada</title>
+  <meta name="description" content="Associe-se a Diamba Sagrada e tenha acesso a acolhimento, orientação médica e suporte jurídico para tratamento com cannabis medicinal." data-en-content="Become a member of Diamba Sagrada and gain access to welcoming support, medical guidance and legal support for medical cannabis treatment.">
+  <title data-en="Become a Member — Diamba Sagrada">Seja Associado — Diamba Sagrada</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,27 +22,33 @@
   <nav class="nav" aria-label="Navegação principal">
     <div class="nav__inner">
       <!-- Logo -->
-      <a href="index.html" class="nav__logo" aria-label="Diamba Sagrada — Página inicial">
+      <a href="index.html" class="nav__logo" aria-label="Diamba Sagrada — Página inicial" data-en-aria-label="Diamba Sagrada — Home">
         <img src="img/logo.png" alt="Logo Diamba Sagrada" width="48" height="48">
         Diamba Sagrada
       </a>
 
       <!-- Desktop links -->
       <div class="nav__links">
-        <a href="index.html" class="nav__link">Início</a>
-        <a href="quem-somos.html" class="nav__link">Quem Somos</a>
-        <a href="area-medica.html" class="nav__link">Área Médica</a>
-        <a href="area-juridica.html" class="nav__link">Jurídico</a>
-        <a href="blog.html" class="nav__link">Blog</a>
-        <a href="produtos.html" class="nav__link">Loja</a>
-        <a href="contato.html" class="nav__link">Contato</a>
+        <a href="index.html" class="nav__link" data-en="Home">Início</a>
+        <a href="quem-somos.html" class="nav__link" data-en="About Us">Quem Somos</a>
+        <a href="area-medica.html" class="nav__link" data-en="Medical">Área Médica</a>
+        <a href="area-juridica.html" class="nav__link" data-en="Legal">Jurídico</a>
+        <a href="blog.html" class="nav__link" data-en="Blog">Blog</a>
+        <a href="produtos.html" class="nav__link" data-en="Shop">Loja</a>
+        <a href="contato.html" class="nav__link" data-en="Contact">Contato</a>
+      </div>
+
+      <!-- Language toggle -->
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-toggle__btn" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
 
       <!-- Desktop CTA -->
-      <a href="seja-associado.html" class="btn btn--primary nav__cta">Seja Associado</a>
+      <a href="seja-associado.html" class="btn btn--primary nav__cta" data-en="Become a Member">Seja Associado</a>
 
       <!-- Mobile toggle -->
-      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-mobile">
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-mobile" data-en-aria-label="Open menu">
         <span></span>
         <span></span>
         <span></span>
@@ -50,15 +56,19 @@
     </div>
 
     <!-- Mobile overlay -->
-    <div class="nav__mobile" id="nav-mobile" role="dialog" aria-label="Menu de navegação">
-      <a href="index.html">Início</a>
-      <a href="quem-somos.html">Quem Somos</a>
-      <a href="area-medica.html">Área Médica</a>
-      <a href="area-juridica.html">Jurídico</a>
-      <a href="blog.html">Blog</a>
-      <a href="produtos.html">Loja</a>
-      <a href="contato.html">Contato</a>
-      <a href="seja-associado.html" class="btn btn--gold">Seja Associado</a>
+    <div class="nav__mobile" id="nav-mobile" role="dialog" aria-label="Menu de navegação" data-en-aria-label="Navigation menu">
+      <a href="index.html" data-en="Home">Início</a>
+      <a href="quem-somos.html" data-en="About Us">Quem Somos</a>
+      <a href="area-medica.html" data-en="Medical">Área Médica</a>
+      <a href="area-juridica.html" data-en="Legal">Jurídico</a>
+      <a href="blog.html" data-en="Blog">Blog</a>
+      <a href="produtos.html" data-en="Shop">Loja</a>
+      <a href="contato.html" data-en="Contact">Contato</a>
+      <a href="seja-associado.html" class="btn btn--gold" data-en="Become a Member">Seja Associado</a>
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-toggle__btn" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </nav>
 
@@ -71,13 +81,13 @@
     <div class="hero__content">
       <!-- Breadcrumb -->
       <nav class="breadcrumb page-enter" aria-label="Breadcrumb">
-        <a href="index.html">Início</a>
+        <a href="index.html" data-en="Home">Início</a>
         <span class="breadcrumb__sep" aria-hidden="true">/</span>
-        <span aria-current="page">Seja Associado</span>
+        <span aria-current="page" data-en="Become a Member">Seja Associado</span>
       </nav>
 
-      <h1 class="hero__title page-enter page-enter--delay-1">Seja Associado</h1>
-      <p class="hero__subtitle page-enter page-enter--delay-2">Faça parte da Diamba Sagrada e tenha acesso a acolhimento, orientação médica e suporte jurídico.</p>
+      <h1 class="hero__title page-enter page-enter--delay-1" data-en="Become a Member">Seja Associado</h1>
+      <p class="hero__subtitle page-enter page-enter--delay-2" data-en="Join Diamba Sagrada and gain access to welcoming support, medical guidance and legal support.">Faça parte da Diamba Sagrada e tenha acesso a acolhimento, orientação médica e suporte jurídico.</p>
     </div>
   </section>
 
@@ -94,24 +104,24 @@
         <div class="form-main reveal">
 
           <!-- Stepper -->
-          <div class="stepper" aria-label="Progresso do formulário">
+          <div class="stepper" aria-label="Progresso do formulário" data-en-aria-label="Form progress">
             <div class="stepper__line">
               <div class="stepper__progress" style="width: 0%"></div>
             </div>
 
             <div class="stepper__step stepper__step--active">
               <div class="stepper__circle">1</div>
-              <span class="stepper__label">Dados Pessoais</span>
+              <span class="stepper__label" data-en="Personal details">Dados Pessoais</span>
             </div>
 
             <div class="stepper__step">
               <div class="stepper__circle">2</div>
-              <span class="stepper__label">Saúde</span>
+              <span class="stepper__label" data-en="Health">Saúde</span>
             </div>
 
             <div class="stepper__step">
               <div class="stepper__circle">3</div>
-              <span class="stepper__label">Confirmação</span>
+              <span class="stepper__label" data-en="Confirmation">Confirmação</span>
             </div>
           </div>
 
@@ -122,34 +132,34 @@
             <div class="form-step form-step--active">
 
               <div class="form-group">
-                <label for="nome" class="form-label">Nome completo</label>
-                <input type="text" id="nome" name="nome" class="form-input" required placeholder="Seu nome completo" autocomplete="name">
-                <div class="form-error">Por favor, insira seu nome completo.</div>
+                <label for="nome" class="form-label" data-en="Full name">Nome completo</label>
+                <input type="text" id="nome" name="nome" class="form-input" required placeholder="Seu nome completo" data-en-placeholder="Your full name" autocomplete="name">
+                <div class="form-error" data-en="Please enter your full name.">Por favor, insira seu nome completo.</div>
               </div>
 
               <div class="form-group">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" id="email" name="email" class="form-input" required placeholder="seu@email.com" autocomplete="email">
-                <div class="form-error">Por favor, insira um e-mail válido.</div>
+                <label for="email" class="form-label" data-en="Email">E-mail</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="seu@email.com" data-en-placeholder="you@email.com" autocomplete="email">
+                <div class="form-error" data-en="Please enter a valid email.">Por favor, insira um e-mail válido.</div>
               </div>
 
               <div class="form-group">
-                <label for="telefone" class="form-label">Telefone / WhatsApp</label>
-                <input type="tel" id="telefone" name="telefone" class="form-input" required placeholder="(11) 99999-9999" autocomplete="tel">
-                <div class="form-error">Por favor, insira seu telefone.</div>
+                <label for="telefone" class="form-label" data-en="Phone / WhatsApp">Telefone / WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" class="form-input" required placeholder="(11) 99999-9999" data-en-placeholder="(11) 99999-9999" autocomplete="tel">
+                <div class="form-error" data-en="Please enter your phone number.">Por favor, insira seu telefone.</div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="cidade" class="form-label">Cidade</label>
-                  <input type="text" id="cidade" name="cidade" class="form-input" required placeholder="Sua cidade" autocomplete="address-level2">
-                  <div class="form-error">Por favor, insira sua cidade.</div>
+                  <label for="cidade" class="form-label" data-en="City">Cidade</label>
+                  <input type="text" id="cidade" name="cidade" class="form-input" required placeholder="Sua cidade" data-en-placeholder="Your city" autocomplete="address-level2">
+                  <div class="form-error" data-en="Please enter your city.">Por favor, insira sua cidade.</div>
                 </div>
 
                 <div class="form-group">
-                  <label for="estado" class="form-label">Estado</label>
+                  <label for="estado" class="form-label" data-en="State">Estado</label>
                   <select id="estado" name="estado" class="form-input" required autocomplete="address-level1">
-                    <option value="">Selecione</option>
+                    <option value="" data-en="Select">Selecione</option>
                     <option value="AC">AC</option>
                     <option value="AL">AL</option>
                     <option value="AM">AM</option>
@@ -178,14 +188,15 @@
                     <option value="SP">SP</option>
                     <option value="TO">TO</option>
                   </select>
-                  <div class="form-error">Por favor, selecione seu estado.</div>
+                  <div class="form-error" data-en="Please select your state.">Por favor, selecione seu estado.</div>
                 </div>
               </div>
 
               <!-- Form nav: only Next -->
               <div class="form-nav">
                 <div></div>
-                <button type="button" class="btn btn--primary" data-action="next">
+                <button type="button" class="btn btn--primary" data-action="next" data-en='Next
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'>
                   Próximo
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
@@ -196,12 +207,12 @@
             <div class="form-step">
 
               <div class="form-group">
-                <label for="condicao" class="form-label">Condição de saúde <span>(opcional)</span></label>
-                <textarea id="condicao" name="condicao" class="form-input" placeholder="Descreva brevemente sua condição de saúde ou o motivo pelo qual busca tratamento com cannabis medicinal..." rows="5"></textarea>
+                <label for="condicao" class="form-label" data-en='Health condition <span>(optional)</span>'>Condição de saúde <span>(opcional)</span></label>
+                <textarea id="condicao" name="condicao" class="form-input" placeholder="Descreva brevemente sua condição de saúde ou o motivo pelo qual busca tratamento com cannabis medicinal..." data-en-placeholder="Briefly describe your health condition or the reason you are seeking medical cannabis treatment..." rows="5"></textarea>
               </div>
 
               <div class="form-group">
-                <div class="file-upload" tabindex="0" role="button" aria-label="Enviar receita médica">
+                <div class="file-upload" tabindex="0" role="button" aria-label="Enviar receita médica" data-en-aria-label="Upload medical prescription">
                   <!-- Upload icon -->
                   <svg class="file-upload__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -209,20 +220,22 @@
                     <line x1="12" y1="3" x2="12" y2="15"/>
                   </svg>
                   <div class="file-upload__text">
-                    <strong>Clique para enviar sua receita médica</strong><br>
-                    (PDF, JPG ou PNG — opcional)
+                    <strong data-en="Click to upload your medical prescription">Clique para enviar sua receita médica</strong><br>
+                    <span data-en="(PDF, JPG or PNG — optional)">(PDF, JPG ou PNG — opcional)</span>
                   </div>
-                  <input type="file" name="receita" accept=".pdf,.jpg,.jpeg,.png" aria-label="Selecionar arquivo de receita médica">
+                  <input type="file" name="receita" accept=".pdf,.jpg,.jpeg,.png" aria-label="Selecionar arquivo de receita médica" data-en-aria-label="Select medical prescription file">
                 </div>
               </div>
 
               <!-- Form nav: Prev + Next -->
               <div class="form-nav">
-                <button type="button" class="btn btn--secondary" data-action="prev">
+                <button type="button" class="btn btn--secondary" data-action="prev" data-en='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                  Back'>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
                   Anterior
                 </button>
-                <button type="button" class="btn btn--primary" data-action="next">
+                <button type="button" class="btn btn--primary" data-action="next" data-en='Next
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'>
                   Próximo
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
@@ -232,25 +245,27 @@
             <!-- ==================== STEP 3 — Confirmação ==================== -->
             <div class="form-step">
 
-              <p style="margin-bottom: var(--space-xl); color: var(--color-text-light);">Revise suas informações e aceite os termos para concluir.</p>
+              <p style="margin-bottom: var(--space-xl); color: var(--color-text-light);" data-en="Review your information and accept the terms to complete.">Revise suas informações e aceite os termos para concluir.</p>
 
               <div class="form-group">
                 <label class="form-checkbox">
                   <input type="checkbox" name="termos" required>
-                  <span class="form-checkbox__label">
+                  <span class="form-checkbox__label" data-en='I have read and accept the <a href="#" target="_blank">Terms of Use</a> and the <a href="#" target="_blank">Privacy Policy</a> of Diamba Sagrada. I authorize the processing of my personal data in accordance with the LGPD (Brazilian General Data Protection Law).'>
                     Li e aceito os <a href="#" target="_blank">Termos de Uso</a> e a <a href="#" target="_blank">Política de Privacidade</a> da Diamba Sagrada. Autorizo o tratamento dos meus dados pessoais conforme a LGPD (Lei Geral de Proteção de Dados).
                   </span>
                 </label>
-                <div class="form-error">Você precisa aceitar os termos para continuar.</div>
+                <div class="form-error" data-en="You must accept the terms to continue.">Você precisa aceitar os termos para continuar.</div>
               </div>
 
               <!-- Form nav: Prev + Submit -->
               <div class="form-nav">
-                <button type="button" class="btn btn--secondary" data-action="prev">
+                <button type="button" class="btn btn--secondary" data-action="prev" data-en='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                  Back'>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
                   Anterior
                 </button>
-                <button type="submit" class="btn btn--primary btn--lg">
+                <button type="submit" class="btn btn--primary btn--lg" data-en='Submit registration
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>'>
                   Enviar cadastro
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
                 </button>
@@ -266,11 +281,11 @@
                   <path d="M24 40l10 10 22-22" stroke-width="3"/>
                 </svg>
 
-                <h2 style="margin-bottom: var(--space-md);">Cadastro enviado com sucesso!</h2>
-                <p style="color: var(--color-text-light); max-width: 500px; margin-inline: auto; margin-bottom: var(--space-2xl);">
+                <h2 style="margin-bottom: var(--space-md);" data-en="Registration submitted successfully!">Cadastro enviado com sucesso!</h2>
+                <p style="color: var(--color-text-light); max-width: 500px; margin-inline: auto; margin-bottom: var(--space-2xl);" data-en="Thank you for joining Diamba Sagrada. Our team will be in touch soon to begin welcoming you.">
                   Obrigado por se juntar a Diamba Sagrada. Nossa equipe entrará em contato em breve para dar início ao seu acolhimento.
                 </p>
-                <a href="index.html" class="btn btn--primary">Voltar ao início</a>
+                <a href="index.html" class="btn btn--primary" data-en="Back to home">Voltar ao início</a>
               </div>
             </div>
 
@@ -282,43 +297,43 @@
              ============================================================ -->
         <aside class="sidebar reveal reveal--right">
           <div class="sidebar__card">
-            <h3 class="sidebar__title">Benefícios da associação</h3>
+            <h3 class="sidebar__title" data-en="Membership benefits">Benefícios da associação</h3>
             <ul class="sidebar__list">
               <li class="sidebar__item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
-                <span>Acolhimento personalizado e humanizado</span>
+                <span data-en="Personalized, humane welcoming support">Acolhimento personalizado e humanizado</span>
               </li>
               <li class="sidebar__item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
-                <span>Acesso a médicos prescritores parceiros</span>
+                <span data-en="Access to partner prescribing physicians">Acesso a médicos prescritores parceiros</span>
               </li>
               <li class="sidebar__item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
-                <span>Orientação jurídica especializada</span>
+                <span data-en="Specialized legal guidance">Orientação jurídica especializada</span>
               </li>
               <li class="sidebar__item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
-                <span>Informações qualificadas sobre cannabis medicinal</span>
+                <span data-en="Qualified information about medical cannabis">Informações qualificadas sobre cannabis medicinal</span>
               </li>
               <li class="sidebar__item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
-                <span>Comunidade de apoio entre pacientes</span>
+                <span data-en="A support community among patients">Comunidade de apoio entre pacientes</span>
               </li>
               <li class="sidebar__item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
-                <span>Acesso prioritário a novos serviços</span>
+                <span data-en="Priority access to new services">Acesso prioritário a novos serviços</span>
               </li>
             </ul>
           </div>
@@ -336,8 +351,8 @@
 
       <!-- Section header -->
       <div class="section__header reveal">
-        <span class="section__overline">Perguntas Frequentes</span>
-        <h2 class="section__title">Tire suas dúvidas</h2>
+        <span class="section__overline" data-en="Frequently Asked Questions">Perguntas Frequentes</span>
+        <h2 class="section__title" data-en="Clear your doubts">Tire suas dúvidas</h2>
       </div>
 
       <!-- Accordion -->
@@ -346,13 +361,13 @@
         <!-- FAQ 1 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Como funciona a associação?</span>
+            <span data-en="How does the association work?">Como funciona a associação?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="Diamba Sagrada is a non-profit association that brings together patients interested in medical cannabis treatment. We offer welcoming support, medical guidance and legal support so you can access treatment safely and lawfully.">
               A Diamba Sagrada é uma associação sem fins lucrativos que reúne pacientes interessados em tratamento com cannabis medicinal. Oferecemos acolhimento, orientação médica e suporte jurídico para que você possa acessar o tratamento de forma segura e legal.
             </div>
           </div>
@@ -361,13 +376,13 @@
         <!-- FAQ 2 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Vocês fornecem óleo de cannabis?</span>
+            <span data-en="Do you provide cannabis oil?">Vocês fornecem óleo de cannabis?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="At the moment, we are still under construction and do NOT provide oil or any cannabis-based product. Our current focus is guidance, connection with prescribing physicians and legal support. Associative cultivation is a future goal.">
               No momento, estamos em fase de construção e NÃO fornecemos óleo ou qualquer produto a base de cannabis. Nosso foco atual é orientação, conexão com médicos prescritores e suporte jurídico. O cultivo associativo é um objetivo futuro.
             </div>
           </div>
@@ -376,13 +391,13 @@
         <!-- FAQ 3 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Preciso ter receita médica para me associar?</span>
+            <span data-en="Do I need a medical prescription to become a member?">Preciso ter receita médica para me associar?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="No. You can become a member even without a medical prescription. Part of our work is precisely to help you find a partner prescribing physician who can assess whether medical cannabis treatment is suitable for your case.">
               Não. Você pode se associar mesmo sem receita médica. Parte do nosso trabalho é justamente ajudá-lo a encontrar um médico prescritor parceiro que avalie se o tratamento com cannabis medicinal é indicado para o seu caso.
             </div>
           </div>
@@ -391,13 +406,13 @@
         <!-- FAQ 4 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>O tratamento com cannabis medicinal é legal no Brasil?</span>
+            <span data-en="Is medical cannabis treatment legal in Brazil?">O tratamento com cannabis medicinal é legal no Brasil?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="Yes. Anvisa authorizes the use of cannabis-based products for medicinal purposes upon medical prescription. In addition, court rulings have recognized the right to cultivation for personal medicinal use in several cases.">
               Sim. A Anvisa autoriza o uso de produtos a base de cannabis para fins medicinais mediante prescrição médica. Além disso, decisões judiciais têm reconhecido o direito ao cultivo para uso próprio medicinal em diversos casos.
             </div>
           </div>
@@ -406,13 +421,13 @@
         <!-- FAQ 5 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Quanto custa para se associar?</span>
+            <span data-en="How much does it cost to become a member?">Quanto custa para se associar?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="The association works with affordable monthly contributions that vary according to the patient's social situation. No one is prevented from taking part for financial reasons. Get in touch to learn more.">
               A associação trabalha com contribuições mensais acessíveis que variam conforme a condição social do paciente. Ninguém é impedido de participar por questões financeiras. Entre em contato para saber mais.
             </div>
           </div>
@@ -421,13 +436,13 @@
         <!-- FAQ 6 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Meus dados estão seguros?</span>
+            <span data-en="Is my data safe?">Meus dados estão seguros?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="Yes. We take the protection of your data very seriously. We comply with the LGPD (Brazilian General Data Protection Law), and your personal and health data are handled with complete confidentiality and security.">
               Sim. Levamos a proteção dos seus dados muito a sério. Estamos em conformidade com a LGPD (Lei Geral de Proteção de Dados) e seus dados pessoais e de saúde são tratados com total sigilo e segurança.
             </div>
           </div>
@@ -436,13 +451,13 @@
         <!-- FAQ 7 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Como funciona a conexão com médicos?</span>
+            <span data-en="How does the connection with physicians work?">Como funciona a conexão com médicos?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="We maintain a network of partner physicians who are licensed prescribers sensitive to medical cannabis treatment. After the initial welcoming, we refer you to a professional suited to your case.">
               Mantemos uma rede de médicos parceiros que são prescritores habilitados e sensíveis ao tratamento com cannabis medicinal. Após o acolhimento inicial, encaminhamos você para um profissional adequado ao seu caso.
             </div>
           </div>
@@ -451,13 +466,13 @@
         <!-- FAQ 8 -->
         <div class="accordion__item reveal">
           <button class="accordion__trigger" aria-expanded="false">
-            <span>Posso participar sendo de outro estado?</span>
+            <span data-en="Can I take part if I live in another state?">Posso participar sendo de outro estado?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
           <div class="accordion__content">
-            <div class="accordion__inner">
+            <div class="accordion__inner" data-en="Yes! Diamba Sagrada serves patients throughout Brazil. Much of our welcoming support and guidance can be provided remotely, by video call or phone.">
               Sim! A Diamba Sagrada atende pacientes de todo o Brasil. Grande parte do nosso acolhimento e orientação pode ser feita de forma remota, por videochamada ou telefone.
             </div>
           </div>
@@ -477,9 +492,9 @@
       </div>
     <div class="container">
       <div class="cta-final__content reveal">
-        <h2>Ainda tem dúvidas?</h2>
-        <p>Fale diretamente com nossa equipe. Estamos aqui para ajudar.</p>
-        <a href="#" class="btn btn--gold btn--lg">Fale conosco</a>
+        <h2 data-en="Still have questions?">Ainda tem dúvidas?</h2>
+        <p data-en="Talk directly with our team. We are here to help.">Fale diretamente com nossa equipe. Estamos aqui para ajudar.</p>
+        <a href="#" class="btn btn--gold btn--lg" data-en="Contact us">Fale conosco</a>
       </div>
     </div>
   </section>
@@ -497,40 +512,41 @@
             <img src="img/logo.png" alt="Logo Diamba Sagrada" width="40" height="40">
             Diamba Sagrada
           </div>
-          <p class="footer__desc">Associação de pacientes dedicada ao acesso seguro e legal a cannabis medicinal no Brasil.</p>
+          <p class="footer__desc" data-en="A patient association dedicated to safe and legal access to medical cannabis in Brazil.">Associação de pacientes dedicada ao acesso seguro e legal a cannabis medicinal no Brasil.</p>
         </div>
 
         <!-- Links -->
         <div>
-          <h4 class="footer__heading">Navegação</h4>
+          <h4 class="footer__heading" data-en="Navigation">Navegação</h4>
           <ul class="footer__list">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="quem-somos.html">Quem Somos</a></li>
-            <li><a href="o-que-fazemos.html">O Que Fazemos</a></li>
-            <li><a href="seja-associado.html">Seja Associado</a></li>
+            <li><a href="index.html" data-en="Home">Início</a></li>
+            <li><a href="quem-somos.html" data-en="About Us">Quem Somos</a></li>
+            <li><a href="o-que-fazemos.html" data-en="What We Do">O Que Fazemos</a></li>
+            <li><a href="seja-associado.html" data-en="Become a Member">Seja Associado</a></li>
           </ul>
         </div>
 
         <!-- Legal -->
         <div>
-          <h4 class="footer__heading">Legal</h4>
+          <h4 class="footer__heading" data-en="Legal">Legal</h4>
           <ul class="footer__list">
-            <li><a href="#">Termos de Uso</a></li>
-            <li><a href="#">Política de Privacidade</a></li>
-            <li><a href="#">LGPD</a></li>
+            <li><a href="#" data-en="Terms of Use">Termos de Uso</a></li>
+            <li><a href="#" data-en="Privacy Policy">Política de Privacidade</a></li>
+            <li><a href="#" data-en="LGPD">LGPD</a></li>
           </ul>
         </div>
 
       </div>
 
       <div class="footer__bottom">
-        <span>&copy; 2024 Diamba Sagrada. Todos os direitos reservados.</span>
-        <span>Feito com cuidado e propósito.</span>
+        <span data-en="&copy; 2024 Diamba Sagrada. All rights reserved.">&copy; 2024 Diamba Sagrada. Todos os direitos reservados.</span>
+        <span data-en="Made with care and purpose.">Feito com cuidado e propósito.</span>
       </div>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
