@@ -1,23 +1,25 @@
+import type { Locale } from "@/lib/i18n";
+
 export type NavLink = {
   href: string;
-  label: string;
+  label: Record<Locale, string>;
 };
 
 export const navLinks: NavLink[] = [
-  { href: "/", label: "Início" },
-  { href: "/quem-somos", label: "Quem Somos" },
-  { href: "/area-medica", label: "Área Médica" },
-  { href: "/area-juridica", label: "Jurídico" },
-  { href: "/blog", label: "Blog" },
-  { href: "/produtos", label: "Loja" },
-  { href: "/doar", label: "Doar" },
-  { href: "/contato", label: "Contato" },
+  { href: "/", label: { pt: "Início", en: "Home" } },
+  { href: "/quem-somos", label: { pt: "Quem Somos", en: "About Us" } },
+  { href: "/area-medica", label: { pt: "Área Médica", en: "Medical" } },
+  { href: "/area-juridica", label: { pt: "Jurídico", en: "Legal" } },
+  { href: "/blog", label: { pt: "Blog", en: "Blog" } },
+  { href: "/produtos", label: { pt: "Loja", en: "Shop" } },
+  { href: "/doar", label: { pt: "Doar", en: "Donate" } },
+  { href: "/contato", label: { pt: "Contato", en: "Contact" } },
 ];
 
 export const footerNav: NavLink[] = [
-  { href: "/", label: "Início" },
-  { href: "/quem-somos", label: "Quem Somos" },
-  { href: "/o-que-fazemos", label: "O Que Fazemos" },
-  { href: "/seja-associado", label: "Seja Associado" },
-  { href: "/doar", label: "Doar" },
+  { href: "/", label: { pt: "Início", en: "Home" } },
+  { href: "/quem-somos", label: { pt: "Quem Somos", en: "About Us" } },
+  { href: "/o-que-fazemos", label: { pt: "O Que Fazemos", en: "What We Do" } },
+  { href: "/seja-associado", label: { pt: "Seja Associado", en: "Become a Member" } },
+  { href: "/doar", label: { pt: "Doar", en: "Donate" } },
 ];

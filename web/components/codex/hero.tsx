@@ -1,8 +1,32 @@
-import { InlineLink } from "@/components/ui";
 import { MagneticCTA, Reveal } from "@/components/motion";
 import { HeroVideo } from "@/components/codex/hero-video";
+import { getLocale } from "@/lib/i18n.server";
 
-export function Hero() {
+const copy = {
+  pt: {
+    folio: "Fólio I",
+    status: "Em construção",
+    line1: "Cultivar é direito.",
+    treatPrefix: "Tratar é ",
+    highlight: "dignidade",
+    cta: "Quero me associar",
+    how: "Como funciona",
+  },
+  en: {
+    folio: "Folio I",
+    status: "Under construction",
+    line1: "To cultivate is a right.",
+    treatPrefix: "To treat is ",
+    highlight: "dignity",
+    cta: "I want to join",
+    how: "How it works",
+  },
+};
+
+export async function Hero() {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   return (
     <section
       className="
@@ -43,7 +67,7 @@ export function Hero() {
               className="not-italic font-semibold text-[0.78em] tracking-[0.28em] text-gold-leaf"
               style={{ fontVariant: "small-caps" }}
             >
-              Fólio I
+              {t.folio}
             </span>
             <span aria-hidden className="inline-block size-2 rotate-45 border border-gold-leaf/80" />
             <em className="text-paper/85">Codex Diamba</em>
@@ -73,7 +97,7 @@ export function Hero() {
                 className="not-italic text-[0.72rem] tracking-[0.22em] text-gold-leaf font-semibold"
                 style={{ fontVariant: "small-caps" }}
               >
-                Em construção
+                {t.status}
               </span>
             </span>
           </Reveal>
@@ -96,9 +120,9 @@ export function Hero() {
               "
               style={{ textShadow: "0 1px 24px rgba(20,39,30,0.55)" }}
             >
-              Cultivar é direito.
+              {t.line1}
               <br />
-              Tratar é{" "}
+              {t.treatPrefix}
               <span
                 className="italic font-medium text-gold-leaf relative"
                 style={{
@@ -106,7 +130,7 @@ export function Hero() {
                     "linear-gradient(transparent 78%, rgba(183,144,47,0.42) 78%, rgba(183,144,47,0.42) 92%, transparent 92%)",
                 }}
               >
-                dignidade
+                {t.highlight}
               </span>
               .
             </h1>
@@ -115,7 +139,7 @@ export function Hero() {
           <Reveal delay={360}>
             <div className="flex flex-wrap items-center gap-7">
               <MagneticCTA href="/seja-associado" variant="gold">
-                Quero me associar
+                {t.cta}
               </MagneticCTA>
               <a
                 href="#jornada"
@@ -127,7 +151,7 @@ export function Hero() {
                 "
               >
                 <span className="relative">
-                  Como funciona
+                  {t.how}
                   <span
                     aria-hidden
                     className="

@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { getProduto } from "@/lib/produtos";
 import { criarCobranca } from "@/lib/abacate";
 import { siteConfig, whatsappUrl, formatBRL } from "@/lib/config";
+import { getLocale } from "@/lib/i18n.server";
 
 async function baseUrl(): Promise<string> {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
@@ -17,14 +18,29 @@ export type ResultadoCompra =
   | { ok: true; checkoutUrl: string }
   | { ok: false; error: string };
 
+const copy = {
+  pt: {
+    notFound: "Produto não encontrado.",
+    buyMsg: (nome: string, preco: string) => `Olá! Quero comprar: ${nome} (${preco}).`,
+  },
+  en: {
+    notFound: "Product not found.",
+    buyMsg: (nome: string, preco: string) => `Hello! I'd like to buy: ${nome} (${preco}).`,
+  },
+};
+
 export async function comprarProduto(id: string): Promise<ResultadoCompra> {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   const produto = getProduto(id);
-  if (!produto) return { ok: false, error: "Produto não encontrado." };
+  if (!produto) return { ok: false, error: t.notFound };
 
   const origin = await baseUrl();
   const cobranca = await criarCobranca({
     valorCents: produto.precoCents,
-    descricao: `${produto.nome} — ${siteConfig.name}`,
+    // Internal/merchant description stays in pt (canonical record).
+    descricao: `${produto.nome.pt} — ${siteConfig.name}`,
     cliente: { nome: "", email: "" },
     returnUrl: new URL("/produtos", origin).toString(),
     completionUrl: new URL("/produtos?ok=1", origin).toString(),
@@ -36,7 +52,7 @@ export async function comprarProduto(id: string): Promise<ResultadoCompra> {
     return {
       ok: true,
       checkoutUrl: whatsappUrl(
-        `Olá! Quero comprar: ${produto.nome} (${formatBRL(produto.precoCents)}).`,
+        t.buyMsg(produto.nome[locale], formatBRL(produto.precoCents)),
       ),
     };
   }

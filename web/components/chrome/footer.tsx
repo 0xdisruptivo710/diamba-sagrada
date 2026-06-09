@@ -1,8 +1,35 @@
 import Link from "next/link";
 import Image from "next/image";
 import { footerNav } from "@/lib/nav-config";
+import { type Locale } from "@/lib/i18n";
 
-export function Footer() {
+const copy = {
+  pt: {
+    logoAria: "Diamba Sagrada — Página Inicial",
+    intro:
+      "Associação de pacientes dedicada ao acesso seguro, legal e humanizado à cannabis medicinal no Brasil. Uma obra coletiva de cuidado, escrita a muitas mãos.",
+    colophon: "Cólofon — Diamba Sagrada",
+    summary: "Sumário",
+    correspondence: "Correspondência",
+    instagramAria: "Instagram da Diamba Sagrada",
+    edition: "Edição Primeira · Anno Domini MMXXIV · Diamba Sagrada",
+    rights: "Associação sem fins lucrativos · Todos os direitos reservados",
+  },
+  en: {
+    logoAria: "Diamba Sagrada — Home",
+    intro:
+      "A patient association dedicated to safe, legal and humane access to medical cannabis in Brazil. A collective work of care, written by many hands.",
+    colophon: "Colophon — Diamba Sagrada",
+    summary: "Contents",
+    correspondence: "Correspondence",
+    instagramAria: "Diamba Sagrada on Instagram",
+    edition: "First Edition · Anno Domini MMXXIV · Diamba Sagrada",
+    rights: "Non-profit association · All rights reserved",
+  },
+} satisfies Record<Locale, Record<string, string>>;
+
+export function Footer({ locale }: { locale: Locale }) {
+  const t = copy[locale];
   return (
     <footer
       role="contentinfo"
@@ -27,7 +54,7 @@ export function Footer() {
             className="absolute inset-x-0 -top-2 text-center font-display italic text-[0.78rem] tracking-[0.32em] text-gold-leaf"
             style={{ fontVariant: "small-caps" }}
           >
-            Cólofon — Diamba Sagrada
+            {t.colophon}
           </p>
           <p
             aria-hidden
@@ -39,7 +66,7 @@ export function Footer() {
           <div className="max-w-xs">
             <Link
               href="/"
-              aria-label="Diamba Sagrada — Página Inicial"
+              aria-label={t.logoAria}
               className="mb-4 inline-flex items-center gap-3 font-display italic text-xl font-semibold text-paper"
             >
               <span className="block size-10 overflow-hidden rounded-full ring-1 ring-gold-leaf shadow-[0_0_0_3px_var(--color-forest-deep),0_0_0_4px_rgba(183,144,47,0.4)]">
@@ -53,10 +80,7 @@ export function Footer() {
               </span>
               <span>Diamba Sagrada</span>
             </Link>
-            <p className="font-body text-[0.92rem] leading-[1.75]">
-              Associação de pacientes dedicada ao acesso seguro, legal e humanizado à cannabis
-              medicinal no Brasil. Uma obra coletiva de cuidado, escrita a muitas mãos.
-            </p>
+            <p className="font-body text-[0.92rem] leading-[1.75]">{t.intro}</p>
           </div>
 
           <div>
@@ -64,7 +88,7 @@ export function Footer() {
               className="mb-5 font-display italic text-[0.85rem] text-gold-leaf tracking-[0.22em]"
               style={{ fontVariant: "small-caps" }}
             >
-              Sumário
+              {t.summary}
             </h2>
             <ul className="flex flex-col gap-2">
               {footerNav.map((link) => (
@@ -73,7 +97,7 @@ export function Footer() {
                     href={link.href}
                     className="font-display italic text-[0.98rem] transition-[color,letter-spacing] hover:text-gold-leaf hover:tracking-[0.015em]"
                   >
-                    {link.label}
+                    {link.label[locale]}
                   </Link>
                 </li>
               ))}
@@ -85,7 +109,7 @@ export function Footer() {
               className="mb-5 font-display italic text-[0.85rem] text-gold-leaf tracking-[0.22em]"
               style={{ fontVariant: "small-caps" }}
             >
-              Correspondência
+              {t.correspondence}
             </h2>
             <ul className="flex flex-col gap-2">
               <li>
@@ -115,7 +139,7 @@ export function Footer() {
                   href="https://www.instagram.com/diambasagrada"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram da Diamba Sagrada"
+                  aria-label={t.instagramAria}
                   className="inline-flex items-center gap-2 font-display italic text-[0.98rem] transition-[color,letter-spacing] hover:text-gold-leaf hover:tracking-[0.015em]"
                 >
                   <svg
@@ -143,9 +167,9 @@ export function Footer() {
         <div className="mt-4 border-t border-[rgba(183,144,47,0.28)] pt-6 flex flex-wrap justify-between gap-3 font-display italic text-[0.82rem] text-[rgba(241,232,211,0.55)]">
           <p>
             <span className="text-gold-leaf opacity-85 mr-2">❧</span>
-            Edição Primeira · Anno Domini MMXXIV · Diamba Sagrada
+            {t.edition}
           </p>
-          <p>Associação sem fins lucrativos · Todos os direitos reservados</p>
+          <p>{t.rights}</p>
         </div>
       </div>
     </footer>

@@ -5,8 +5,30 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/lib/nav-config";
+import { type Locale } from "@/lib/i18n";
+import { LangToggle } from "@/components/chrome/lang-toggle";
 
-export function Nav() {
+const copy = {
+  pt: {
+    logoAria: "Diamba Sagrada — Página Inicial",
+    summary: "Sumário",
+    cta: "Seja Associado",
+    openMenu: "Abrir menu",
+    closeMenu: "Fechar menu",
+    menuAria: "Menu de navegação",
+  },
+  en: {
+    logoAria: "Diamba Sagrada — Home",
+    summary: "Contents",
+    cta: "Become a Member",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    menuAria: "Navigation menu",
+  },
+} satisfies Record<Locale, Record<string, string>>;
+
+export function Nav({ locale }: { locale: Locale }) {
+  const t = copy[locale];
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -51,7 +73,7 @@ export function Nav() {
       <div className="mx-auto flex h-full max-w-[1180px] items-center justify-between gap-6 px-6 md:px-8">
         <Link
           href="/"
-          aria-label="Diamba Sagrada — Página Inicial"
+          aria-label={t.logoAria}
           className={
             "flex items-center gap-3 font-display italic text-xl font-semibold transition-colors hover:text-gold-leaf " +
             (overCinematic
@@ -81,7 +103,7 @@ export function Nav() {
                 : "text-ink-soft border-[var(--rule-strong)]")
             }
           >
-            Sumário
+            {t.summary}
           </span>
           {navLinks.map((link) => {
             const active = isActive(link.href);
@@ -99,27 +121,30 @@ export function Nav() {
                     : "text-ink data-[active=true]:text-gold-deep")
                 }
               >
-                {link.label}
+                {link.label[locale]}
               </Link>
             );
           })}
         </div>
 
-        <Link
-          href="/seja-associado"
-          className={
-            "hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-[2px] font-display italic text-[0.95rem] transition-all border " +
-            (overCinematic
-              ? "bg-forest-deep/35 text-gold-leaf border-gold-leaf backdrop-blur-[2px] hover:bg-gold-leaf hover:text-forest-deep hover:shadow-[0_2px_14px_rgba(183,144,47,0.35)]"
-              : "bg-forest text-paper border-forest-deep shadow-[inset_0_0_0_1px_rgba(183,144,47,0.25),0_1px_0_var(--color-paper-shade)] hover:bg-forest-deep hover:shadow-[inset_0_0_0_1px_rgba(183,144,47,0.55),0_2px_0_var(--color-paper-shade)]")
-          }
-        >
-          Seja Associado
-        </Link>
+        <div className="hidden lg:flex items-center gap-4">
+          <LangToggle locale={locale} cinematic={overCinematic} />
+          <Link
+            href="/seja-associado"
+            className={
+              "inline-flex items-center justify-center px-5 py-2.5 rounded-[2px] font-display italic text-[0.95rem] transition-all border " +
+              (overCinematic
+                ? "bg-forest-deep/35 text-gold-leaf border-gold-leaf backdrop-blur-[2px] hover:bg-gold-leaf hover:text-forest-deep hover:shadow-[0_2px_14px_rgba(183,144,47,0.35)]"
+                : "bg-forest text-paper border-forest-deep shadow-[inset_0_0_0_1px_rgba(183,144,47,0.25),0_1px_0_var(--color-paper-shade)] hover:bg-forest-deep hover:shadow-[inset_0_0_0_1px_rgba(183,144,47,0.55),0_2px_0_var(--color-paper-shade)]")
+            }
+          >
+            {t.cta}
+          </Link>
+        </div>
 
         <button
           type="button"
-          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          aria-label={mobileOpen ? t.closeMenu : t.openMenu}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           onClick={() => setMobileOpen((v) => !v)}
@@ -156,7 +181,7 @@ export function Nav() {
       <div
         id="mobile-menu"
         role="dialog"
-        aria-label="Menu de navegação"
+        aria-label={t.menuAria}
         data-open={mobileOpen}
         className="
           fixed inset-0 z-30 flex flex-col items-center justify-center gap-12
@@ -171,15 +196,16 @@ export function Nav() {
             href={link.href}
             className="font-display italic text-3xl text-ink transition-colors hover:text-gold-leaf"
           >
-            {link.label}
+            {link.label[locale]}
           </Link>
         ))}
         <Link
           href="/seja-associado"
           className="px-6 py-3 rounded-[2px] bg-gold-leaf text-forest-deep font-display italic"
         >
-          Seja Associado
+          {t.cta}
         </Link>
+        <LangToggle locale={locale} className="text-[0.95rem]" />
       </div>
     </header>
   );

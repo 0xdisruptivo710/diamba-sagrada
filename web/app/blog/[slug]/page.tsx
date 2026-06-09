@@ -4,9 +4,31 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/codex/page-hero";
 import { CodexAsterism, CodexQuote } from "@/components/ornaments";
 import { Reveal } from "@/components/motion";
-import { blogPosts, getPostBySlug } from "@/lib/blog";
+import { blogPosts, getPostBySlug, blogCategoryLabels } from "@/lib/blog";
+import { getLocale } from "@/lib/i18n.server";
 
 type Params = { slug: string };
+
+const copy = {
+  pt: {
+    notFound: "Artigo não encontrado",
+    crumbHome: "Início",
+    crumbBlog: "Blog",
+    readingTime: (m: number) => `${m} min de leitura`,
+    quote: "Cuidar é também escrever. Registrar é deixar testemunho para quem vem depois.",
+    back: "← Voltar ao Sumário",
+    intl: "pt-BR",
+  },
+  en: {
+    notFound: "Article not found",
+    crumbHome: "Home",
+    crumbBlog: "Blog",
+    readingTime: (m: number) => `${m} min read`,
+    quote: "To care is also to write. To record is to leave testimony for those who come after.",
+    back: "← Back to Contents",
+    intl: "en-US",
+  },
+};
 
 export async function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
@@ -17,53 +39,56 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
+  const locale = await getLocale();
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Artigo não encontrado" };
+  if (!post) return { title: copy[locale].notFound };
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: post.title[locale],
+    description: post.excerpt[locale],
   };
 }
-
-const dateFormat = new Intl.DateTimeFormat("pt-BR", {
-  day: "2-digit",
-  month: "long",
-  year: "numeric",
-});
 
 export default async function ArticlePage({
   params,
 }: {
   params: Promise<Params>;
 }) {
+  const locale = await getLocale();
+  const t = copy[locale];
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const dateFormat = new Intl.DateTimeFormat(t.intl, {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
     <>
       <PageHero
-        folio={post.category}
+        folio={blogCategoryLabels[locale][post.category]}
         crumbs={[
-          { label: "Início", href: "/" },
-          { label: "Blog", href: "/blog" },
-          { label: post.title },
+          { label: t.crumbHome, href: "/" },
+          { label: t.crumbBlog, href: "/blog" },
+          { label: post.title[locale] },
         ]}
-        title={post.title}
+        title={post.title[locale]}
         subtitle={
           <>
             <time dateTime={post.date} className="text-ink-soft">
               {dateFormat.format(new Date(post.date))}
             </time>{" "}
-            · {post.readingTime} min de leitura
+            · {t.readingTime(post.readingTime)}
           </>
         }
       />
 
       <article className="py-[clamp(4rem,8vw,7rem)]">
         <div className="mx-auto max-w-[720px] px-6 md:px-12">
-          {post.body.map((paragraph, i) => (
+          {post.body[locale].map((paragraph, i) => (
             <Reveal key={i} delay={i * 80}>
               <p
                 className={
@@ -78,16 +103,14 @@ export default async function ArticlePage({
 
           <CodexAsterism />
 
-          <CodexQuote cite="Diamba Sagrada">
-            Cuidar é também escrever. Registrar é deixar testemunho para quem vem depois.
-          </CodexQuote>
+          <CodexQuote cite="Diamba Sagrada">{t.quote}</CodexQuote>
 
           <div className="mt-12 pt-6 border-t border-[var(--rule)]">
             <Link
               href="/blog"
               className="codex-inkstroke font-display italic text-ink hover:text-gold-leaf transition-colors"
             >
-              ← Voltar ao Sumário
+              {t.back}
             </Link>
           </div>
         </div>

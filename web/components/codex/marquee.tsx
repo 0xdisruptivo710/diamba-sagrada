@@ -4,19 +4,40 @@
  * Respects prefers-reduced-motion via the @media block in globals (handled here too).
  */
 
-const values = [
-  "Acolhimento",
-  "Ciência",
-  "Ancestralidade",
-  "Direito",
-  "Cuidado integral",
-  "Dignidade",
-  "Escuta",
-  "Comunidade",
-  "Transparência",
-];
+import { getLocale } from "@/lib/i18n.server";
 
-const Track = ({ ariaHidden }: { ariaHidden?: boolean }) => (
+const copy = {
+  pt: {
+    aria: "Valores que nos guiam",
+    values: [
+      "Acolhimento",
+      "Ciência",
+      "Ancestralidade",
+      "Direito",
+      "Cuidado integral",
+      "Dignidade",
+      "Escuta",
+      "Comunidade",
+      "Transparência",
+    ],
+  },
+  en: {
+    aria: "Values that guide us",
+    values: [
+      "Welcoming",
+      "Science",
+      "Ancestry",
+      "Rights",
+      "Integral care",
+      "Dignity",
+      "Listening",
+      "Community",
+      "Transparency",
+    ],
+  },
+};
+
+const Track = ({ values, ariaHidden }: { values: string[]; ariaHidden?: boolean }) => (
   <ul
     className="flex shrink-0 items-center gap-12 px-6 font-display italic text-ink"
     aria-hidden={ariaHidden}
@@ -32,10 +53,13 @@ const Track = ({ ariaHidden }: { ariaHidden?: boolean }) => (
   </ul>
 );
 
-export function Marquee() {
+export async function Marquee() {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   return (
     <section
-      aria-label="Valores que nos guiam"
+      aria-label={t.aria}
       className="
         relative overflow-hidden border-y border-[var(--rule)]
         py-7 bg-[linear-gradient(180deg,rgba(216,201,162,0.18),transparent_60%,rgba(216,201,162,0.18))]
@@ -52,8 +76,8 @@ export function Marquee() {
       />
 
       <div className="codex-marquee flex w-max">
-        <Track />
-        <Track ariaHidden />
+        <Track values={t.values} />
+        <Track values={t.values} ariaHidden />
       </div>
     </section>
   );

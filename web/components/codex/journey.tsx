@@ -1,40 +1,86 @@
 import { SectionOverline } from "@/components/ornaments";
 import { Reveal } from "@/components/motion";
+import { getLocale } from "@/lib/i18n.server";
 
-const steps = [
-  {
-    n: "Etapa I",
-    title: "Chegou ao lugar certo",
-    body:
-      "Você encontrou uma comunidade de acolhimento. Aqui, ninguém caminha sozinho. Estamos juntos nessa jornada pela saúde e pelo bem-estar.",
+const copy = {
+  pt: {
+    overline: "Articulus Tertius — Itinerarium",
+    heading: "A jornada do paciente",
+    steps: [
+      {
+        n: "Etapa I",
+        title: "Chegou ao lugar certo",
+        body:
+          "Você encontrou uma comunidade de acolhimento. Aqui, ninguém caminha sozinho. Estamos juntos nessa jornada pela saúde e pelo bem-estar.",
+      },
+      {
+        n: "Etapa II",
+        title: "Entenda seus direitos",
+        body:
+          "Orientação jurídica clara e acessível sobre cannabis medicinal no Brasil. Conheça as leis, regulamentações e seus direitos como paciente.",
+      },
+      {
+        n: "Etapa III",
+        title: "Conecte-se com um médico",
+        body:
+          "Médicos parceiros prescritores que compreendem o potencial terapêutico da cannabis e trabalham com protocolos seguros e individualizados.",
+      },
+      {
+        n: "Etapa IV",
+        title: "Envie sua receita",
+        body:
+          "Documentação necessária para acesso legal ao tratamento. Auxiliamos em todo o processo burocrático para que você se concentre no que importa: sua saúde.",
+      },
+      {
+        n: "Etapa V",
+        title: "Faça parte da comunidade",
+        body:
+          "Suporte contínuo e rede de apoio. Grupos de acolhimento, informações atualizadas e uma comunidade que entende e apoia sua caminhada.",
+      },
+    ],
   },
-  {
-    n: "Etapa II",
-    title: "Entenda seus direitos",
-    body:
-      "Orientação jurídica clara e acessível sobre cannabis medicinal no Brasil. Conheça as leis, regulamentações e seus direitos como paciente.",
+  en: {
+    overline: "Articulus Tertius — Itinerarium",
+    heading: "The patient's journey",
+    steps: [
+      {
+        n: "Step I",
+        title: "You're in the right place",
+        body:
+          "You have found a welcoming community. Here, no one walks alone. We are together on this journey toward health and well-being.",
+      },
+      {
+        n: "Step II",
+        title: "Understand your rights",
+        body:
+          "Clear, accessible legal guidance on medical cannabis in Brazil. Get to know the laws, regulations and your rights as a patient.",
+      },
+      {
+        n: "Step III",
+        title: "Connect with a physician",
+        body:
+          "Partner prescribing physicians who understand the therapeutic potential of cannabis and work with safe, individualized protocols.",
+      },
+      {
+        n: "Step IV",
+        title: "Send your prescription",
+        body:
+          "The documentation needed for legal access to treatment. We assist with the entire bureaucratic process so you can focus on what matters: your health.",
+      },
+      {
+        n: "Step V",
+        title: "Join the community",
+        body:
+          "Ongoing support and a network of care. Welcoming groups, up-to-date information and a community that understands and supports your path.",
+      },
+    ],
   },
-  {
-    n: "Etapa III",
-    title: "Conecte-se com um médico",
-    body:
-      "Médicos parceiros prescritores que compreendem o potencial terapêutico da cannabis e trabalham com protocolos seguros e individualizados.",
-  },
-  {
-    n: "Etapa IV",
-    title: "Envie sua receita",
-    body:
-      "Documentação necessária para acesso legal ao tratamento. Auxiliamos em todo o processo burocrático para que você se concentre no que importa: sua saúde.",
-  },
-  {
-    n: "Etapa V",
-    title: "Faça parte da comunidade",
-    body:
-      "Suporte contínuo e rede de apoio. Grupos de acolhimento, informações atualizadas e uma comunidade que entende e apoia sua caminhada.",
-  },
-];
+};
 
-export function Journey() {
+export async function Journey() {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   return (
     <section
       id="jornada"
@@ -50,10 +96,10 @@ export function Journey() {
     >
       <div className="mx-auto max-w-[1180px] px-6 md:px-12">
         <Reveal className="text-center mb-16">
-          <SectionOverline>Articulus Tertius — Itinerarium</SectionOverline>
+          <SectionOverline>{t.overline}</SectionOverline>
           <h2 className="mt-3 font-display italic font-medium text-ink text-[clamp(2rem,3.8vw,2.85rem)] leading-tight">
             <span aria-hidden className="text-gold-leaf text-[0.7em] align-[0.25em] mx-3 opacity-80">⁂</span>
-            A jornada do paciente
+            {t.heading}
             <span aria-hidden className="text-gold-leaf text-[0.7em] align-[0.25em] mx-3 opacity-80">⁂</span>
           </h2>
         </Reveal>
@@ -68,7 +114,7 @@ export function Journey() {
               [background:linear-gradient(90deg,transparent,var(--color-gold-leaf)_6%,var(--color-gold-leaf)_94%,transparent)]
             "
           />
-          {steps.map((s, i) => (
+          {t.steps.map((s, i) => (
             <Reveal
               as="li"
               key={s.n}

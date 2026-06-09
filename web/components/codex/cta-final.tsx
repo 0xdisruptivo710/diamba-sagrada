@@ -1,7 +1,24 @@
 import Image from "next/image";
 import { MagneticCTA, Reveal } from "@/components/motion";
+import { getLocale } from "@/lib/i18n.server";
 
-export function CTAFinal() {
+const copy = {
+  pt: {
+    heading: "Cada pessoa merece acesso digno à saúde",
+    sub: "Junte-se a nós na construção de um cuidado mais humano, seguro e acessível.",
+    cta: "Quero fazer parte",
+  },
+  en: {
+    heading: "Everyone deserves dignified access to health",
+    sub: "Join us in building more humane, safe and accessible care.",
+    cta: "I want to take part",
+  },
+};
+
+export async function CTAFinal() {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   return (
     <section
       className="
@@ -50,13 +67,13 @@ export function CTAFinal() {
       <div className="relative z-10 mx-auto max-w-[1180px] px-6 md:px-12 text-center">
         <Reveal>
           <h2 className="mx-auto mb-4 max-w-[22ch] font-display italic font-medium text-paper text-[clamp(2.2rem,4.8vw,3.4rem)] leading-[1.1]">
-            Cada pessoa merece acesso digno à saúde
+            {t.heading}
           </h2>
           <p className="mx-auto mb-10 max-w-[500px] font-body text-[1.1rem] leading-[1.7] text-[rgba(241,232,211,0.78)]">
-            Junte-se a nós na construção de um cuidado mais humano, seguro e acessível.
+            {t.sub}
           </p>
           <MagneticCTA href="/seja-associado" variant="outlined-gold">
-            Quero fazer parte
+            {t.cta}
           </MagneticCTA>
         </Reveal>
       </div>

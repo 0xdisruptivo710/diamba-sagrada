@@ -4,11 +4,93 @@ import { SectionOverline } from "@/components/ornaments";
 import { Reveal } from "@/components/motion";
 import { Button, ButtonLink } from "@/components/ui";
 import { siteConfig, whatsappUrl } from "@/lib/config";
+import { getLocale } from "@/lib/i18n.server";
 
-export const metadata: Metadata = {
-  title: "Contato",
-  description:
-    "Fale com a Diamba Sagrada. Escuta atenta, sem julgamento. Estamos aqui para acolher e orientar.",
+const copy = {
+  pt: {
+    metaTitle: "Contato",
+    metaDescription:
+      "Fale com a Diamba Sagrada. Escuta atenta, sem julgamento. Estamos aqui para acolher e orientar.",
+    folio: "Fólio VI",
+    crumbHome: "Início",
+    crumbCurrent: "Contato",
+    heroTitle: "Fale conosco",
+    heroSubtitle: "Conte sua história. Lemos cada mensagem com atenção.",
+    formOverline: "Articulus Primus — Mensagem",
+    formHeading: "Envie sua mensagem",
+    labelName: "Nome",
+    labelEmail: "Email",
+    labelPhone: "Telefone",
+    phonePlaceholder: "(00) 00000-0000",
+    labelSubject: "Assunto",
+    subjectSelect: "Selecione",
+    subjects: [
+      "Acolhimento e orientação",
+      "Informação médica",
+      "Informação jurídica",
+      "Quero me associar",
+      "Imprensa / parceria",
+      "Outro",
+    ],
+    labelMessage: "Mensagem",
+    lgpdNote: "Suas informações são tratadas em conformidade com a LGPD.",
+    submit: "Enviar mensagem",
+    sideOverline: "Articulus Secundus — Outras Vias",
+    sideHeading: "Outros caminhos",
+    whatsappMessage: "Olá! Gostaria de falar com a Diamba Sagrada.",
+    whatsappCta: "Falar no WhatsApp",
+    phoneLabel: "Telefone",
+    emailLabel: "Email",
+    instagramLabel: "Instagram",
+    addressLabel: "Onde estamos",
+    hoursLabel: "Horário de Acolhimento",
+    hoursValue: "Segunda a sexta, das 9h às 18h",
+    marginNoteLabel: "Nota de Margem",
+    marginNoteBody:
+      "Em casos de urgência clínica, procure um serviço médico de pronto atendimento. Não somos um serviço de emergência.",
+  },
+  en: {
+    metaTitle: "Contact",
+    metaDescription:
+      "Get in touch with Diamba Sagrada. Attentive listening, without judgment. We are here to welcome and guide you.",
+    folio: "Folio VI",
+    crumbHome: "Home",
+    crumbCurrent: "Contact",
+    heroTitle: "Get in touch",
+    heroSubtitle: "Tell us your story. We read every message with care.",
+    formOverline: "Articulus Primus — Message",
+    formHeading: "Send your message",
+    labelName: "Name",
+    labelEmail: "Email",
+    labelPhone: "Phone",
+    phonePlaceholder: "(00) 00000-0000",
+    labelSubject: "Subject",
+    subjectSelect: "Select",
+    subjects: [
+      "Welcoming and guidance",
+      "Medical information",
+      "Legal information",
+      "I want to become a member",
+      "Press / partnership",
+      "Other",
+    ],
+    labelMessage: "Message",
+    lgpdNote: "Your information is handled in accordance with the LGPD.",
+    submit: "Send message",
+    sideOverline: "Articulus Secundus — Other Channels",
+    sideHeading: "Other ways to reach us",
+    whatsappMessage: "Hello! I'd like to talk to Diamba Sagrada.",
+    whatsappCta: "Chat on WhatsApp",
+    phoneLabel: "Phone",
+    emailLabel: "Email",
+    instagramLabel: "Instagram",
+    addressLabel: "Where we are",
+    hoursLabel: "Welcoming Hours",
+    hoursValue: "Monday to Friday, 9am to 6pm",
+    marginNoteLabel: "Margin Note",
+    marginNoteBody:
+      "In cases of clinical urgency, seek an urgent-care medical service. We are not an emergency service.",
+  },
 };
 
 const inputClass =
@@ -17,22 +99,34 @@ const inputClass =
   "transition-colors focus:border-forest focus:outline-none " +
   "placeholder:text-ink-soft/60";
 
-export default function ContatoPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = copy[locale];
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+  };
+}
+
+export default async function ContatoPage() {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   return (
     <>
       <PageHero
-        folio="Fólio VI"
-        crumbs={[{ label: "Início", href: "/" }, { label: "Contato" }]}
-        title="Fale conosco"
-        subtitle="Conte sua história. Lemos cada mensagem com atenção."
+        folio={t.folio}
+        crumbs={[{ label: t.crumbHome, href: "/" }, { label: t.crumbCurrent }]}
+        title={t.heroTitle}
+        subtitle={t.heroSubtitle}
       />
 
       <section className="py-[clamp(4rem,8vw,7rem)]">
         <div className="mx-auto max-w-[1180px] px-6 md:px-12 grid gap-14 md:grid-cols-[1.4fr_1fr]">
           <Reveal>
-            <SectionOverline>Articulus Primus — Mensagem</SectionOverline>
+            <SectionOverline>{t.formOverline}</SectionOverline>
             <h2 className="mt-3 mb-8 font-display italic font-medium text-ink text-[clamp(1.7rem,3vw,2.2rem)] leading-tight">
-              Envie sua mensagem
+              {t.formHeading}
             </h2>
 
             <form
@@ -47,7 +141,7 @@ export default function ContatoPage() {
                   className="font-display italic text-[0.85rem] text-gold-leaf tracking-[0.18em]"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Nome
+                  {t.labelName}
                 </label>
                 <input id="nome" name="nome" type="text" required className={inputClass} />
               </div>
@@ -59,7 +153,7 @@ export default function ContatoPage() {
                     className="font-display italic text-[0.85rem] text-gold-leaf tracking-[0.18em]"
                     style={{ fontVariant: "small-caps" }}
                   >
-                    Email
+                    {t.labelEmail}
                   </label>
                   <input id="email" name="email" type="email" required className={inputClass} />
                 </div>
@@ -69,14 +163,14 @@ export default function ContatoPage() {
                     className="font-display italic text-[0.85rem] text-gold-leaf tracking-[0.18em]"
                     style={{ fontVariant: "small-caps" }}
                   >
-                    Telefone
+                    {t.labelPhone}
                   </label>
                   <input
                     id="telefone"
                     name="telefone"
                     type="tel"
                     inputMode="tel"
-                    placeholder="(00) 00000-0000"
+                    placeholder={t.phonePlaceholder}
                     className={inputClass}
                   />
                 </div>
@@ -88,18 +182,15 @@ export default function ContatoPage() {
                   className="font-display italic text-[0.85rem] text-gold-leaf tracking-[0.18em]"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Assunto
+                  {t.labelSubject}
                 </label>
                 <select id="assunto" name="assunto" className={inputClass} defaultValue="">
                   <option value="" disabled>
-                    Selecione
+                    {t.subjectSelect}
                   </option>
-                  <option>Acolhimento e orientação</option>
-                  <option>Informação médica</option>
-                  <option>Informação jurídica</option>
-                  <option>Quero me associar</option>
-                  <option>Imprensa / parceria</option>
-                  <option>Outro</option>
+                  {t.subjects.map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
                 </select>
               </div>
 
@@ -109,7 +200,7 @@ export default function ContatoPage() {
                   className="font-display italic text-[0.85rem] text-gold-leaf tracking-[0.18em]"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Mensagem
+                  {t.labelMessage}
                 </label>
                 <textarea
                   id="mensagem"
@@ -119,32 +210,32 @@ export default function ContatoPage() {
                   className={inputClass}
                 />
                 <p className="font-body text-ink-soft text-[0.82rem]">
-                  Suas informações são tratadas em conformidade com a LGPD.
+                  {t.lgpdNote}
                 </p>
               </div>
 
               <div>
                 <Button type="submit" variant="primary" size="lg">
-                  Enviar mensagem
+                  {t.submit}
                 </Button>
               </div>
             </form>
           </Reveal>
 
           <Reveal delay={120} as="aside" className="self-start">
-            <SectionOverline>Articulus Secundus — Outras Vias</SectionOverline>
+            <SectionOverline>{t.sideOverline}</SectionOverline>
             <h2 className="mt-3 mb-6 font-display italic font-medium text-ink text-[clamp(1.5rem,2.6vw,1.9rem)] leading-tight">
-              Outros caminhos
+              {t.sideHeading}
             </h2>
 
             <div className="mb-7">
               <ButtonLink
-                href={whatsappUrl("Olá! Gostaria de falar com a Diamba Sagrada.")}
+                href={whatsappUrl(t.whatsappMessage)}
                 variant="gold"
                 size="md"
                 external
               >
-                Falar no WhatsApp
+                {t.whatsappCta}
               </ButtonLink>
             </div>
 
@@ -155,7 +246,7 @@ export default function ContatoPage() {
                     className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
                     style={{ fontVariant: "small-caps" }}
                   >
-                    Telefone
+                    {t.phoneLabel}
                   </span>
                   <a
                     href={whatsappUrl()}
@@ -172,7 +263,7 @@ export default function ContatoPage() {
                   className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Email
+                  {t.emailLabel}
                 </span>
                 <a
                   href={`mailto:${siteConfig.email}`}
@@ -186,7 +277,7 @@ export default function ContatoPage() {
                   className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Instagram
+                  {t.instagramLabel}
                 </span>
                 <a
                   href={siteConfig.social.instagram}
@@ -202,7 +293,7 @@ export default function ContatoPage() {
                   className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Onde estamos
+                  {t.addressLabel}
                 </span>
                 <span>{siteConfig.address}</span>
               </li>
@@ -211,9 +302,9 @@ export default function ContatoPage() {
                   className="block font-display italic text-[0.78rem] text-gold-leaf tracking-[0.2em] mb-1"
                   style={{ fontVariant: "small-caps" }}
                 >
-                  Horário de Acolhimento
+                  {t.hoursLabel}
                 </span>
-                <span>Segunda a sexta, das 9h às 18h</span>
+                <span>{t.hoursValue}</span>
               </li>
             </ul>
 
@@ -222,10 +313,9 @@ export default function ContatoPage() {
                 className="block not-italic font-semibold text-[0.78rem] tracking-[0.2em] text-gold-leaf mb-1"
                 style={{ fontVariant: "small-caps" }}
               >
-                Nota de Margem
+                {t.marginNoteLabel}
               </strong>
-              Em casos de urgência clínica, procure um serviço médico de pronto
-              atendimento. Não somos um serviço de emergência.
+              {t.marginNoteBody}
             </p>
           </Reveal>
         </div>

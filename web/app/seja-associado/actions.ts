@@ -10,6 +10,7 @@ import {
 import { associationConfig, siteConfig, formatBRL } from "@/lib/config";
 import { criarCobranca } from "@/lib/abacate";
 import { enviarEmailAssociacao } from "@/lib/notify";
+import { getLocale } from "@/lib/i18n.server";
 
 async function baseUrl(): Promise<string> {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
@@ -65,7 +66,8 @@ function resumoEmail(p: PedidoAssociacao, voucher: string): string {
 }
 
 export async function criarAssociacao(pedido: PedidoAssociacao): Promise<ResultadoAssociacao> {
-  const erro = validarPedido(pedido);
+  const locale = await getLocale();
+  const erro = validarPedido(pedido, locale);
   if (erro) return { ok: false, error: erro };
 
   const voucher = gerarVoucher();
